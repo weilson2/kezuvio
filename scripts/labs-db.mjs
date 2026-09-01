@@ -30,7 +30,7 @@ try {
   await client.query(
     `GRANT EXECUTE ON FUNCTION platform.prune_expired(), platform.admit_creation() TO ${role}`,
   );
-  for (const schema of ["platform", "cafe", "commerce", "automation"]) {
+  for (const schema of ["platform", "cafe", "commerce", "automation", "property", "accounting", "interior"]) {
     const exists = await client.query(
       "SELECT 1 FROM pg_namespace WHERE nspname=$1",
       [schema],

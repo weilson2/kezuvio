@@ -22,20 +22,34 @@
     "test:cafe": "node --test tests/labs/cafe-domain.test.mjs tests/labs/cafe-db.test.mjs",
     "test:commerce": "node --test tests/labs/commerce-domain.test.mjs tests/labs/commerce-db.test.mjs",
     "test:automation": "node --test tests/labs/automation-domain.test.mjs tests/labs/automation-db.test.mjs",
+    "test:property": "node --test tests/labs/property-domain.test.mjs tests/labs/property-db.test.mjs",
+    "test:accounting": "node --test tests/labs/accounting-domain.test.mjs tests/labs/accounting-db.test.mjs",
+    "test:interior": "node --test tests/labs/interior-domain.test.mjs tests/labs/interior-db.test.mjs",
+    "test:studio": "node --test tests/studio-domain.test.mjs",
     "db:backup": "node scripts/labs-backup.mjs",
     "test:labs": "playwright test --config playwright.labs.config.ts",
     "pdf:brand": "node scripts/export-brand-presentation.mjs",
-    "marketing:generate": "node scripts/generate-marketing.mjs && node scripts/generate-marketing-previews.mjs"
+    "marketing:generate": "node scripts/generate-marketing.mjs && node scripts/generate-marketing-previews.mjs",
+    "operations:setup": "node scripts/operations-setup.mjs",
+    "test:operations": "node --test tests/operations-domain.test.mjs",
+    "test:operations:rate": "playwright test --config playwright.operations-rate.config.ts"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1",
-    "next": "^16.4.3",
+    "@react-three/fiber": "9.8.2",
+    "next": "16.4.5",
     "pg": "8.23.1",
     "qrcode": "1.5.4",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "three": "0.187.0"
+  },
+  "overrides": {
+    "@prisma/config": {
+      "effect": "3.22.1"
+    }
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
@@ -45,6 +59,7 @@
     "@types/qrcode": "1.5.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@types/three": "0.187.0",
     "jsqr": "1.4.0",
     "opentype.js": "^2.0.0",
     "prettier": "^3.9.10",

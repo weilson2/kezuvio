@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  schemas = ["platform", "cafe", "commerce", "automation"]
+  schemas = ["platform", "cafe", "commerce", "automation", "property", "accounting", "interior"]
 }
 
 model Workspace {
@@ -19,6 +19,9 @@ model Workspace {
   cafeDocuments CafeDocument[]
   commerceDocuments CommerceDocument[]
   automationDocuments AutomationDocument[]
+  propertyDocuments PropertyDocument[]
+  accountingDocuments AccountingDocument[]
+  interiorDocuments InteriorDocument[]
   @@unique([id, product])
   @@map("workspaces")
   @@schema("platform")
@@ -116,4 +119,37 @@ model AutomationDocument {
   @@id([workspaceId,product,generation])
   @@map("documents")
   @@schema("automation")
+}
+
+model PropertyDocument {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("property")
+}
+
+model AccountingDocument {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("accounting")
+}
+
+model InteriorDocument {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("interior")
 }

@@ -86,7 +86,13 @@ export function createRepository<S>(
         ? "commerce.documents"
         : module.id === "automation-hub"
           ? "automation.documents"
-        : "platform.documents";
+          : module.id === "property-crm"
+            ? "property.documents"
+            : module.id === "accounting-cloud"
+              ? "accounting.documents"
+              : module.id === "interior-3d"
+                ? "interior.documents"
+                : "platform.documents";
   const options = { maxWait: 10000, timeout: 15000 };
   async function packet(
     tx: Tx,
