@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { CTA, PageIntro, Principle, ServiceGrid } from "@/components/site";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Explore websites, mobile applications, POS, QR ordering, custom software and SaaS for Malaysian SMEs.",
   alternates: { canonical: "/services" },
-};
+},"/services");
 export default function Services() {
   return (
     <>

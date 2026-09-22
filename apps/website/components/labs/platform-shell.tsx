@@ -13,7 +13,13 @@ import type { Packet } from "../../../../packages/database/index";
 import type { Role } from "../../../../packages/demo-platform/index";
 import "./labs.css";
 
-const defaultRoles: Role[] = ["customer", "kitchen", "cashier", "manager", "viewer"];
+const defaultRoles: Role[] = [
+  "customer",
+  "kitchen",
+  "cashier",
+  "manager",
+  "viewer",
+];
 
 export function useLabWorkspace(product: string) {
   const [packet, setPacket] = useState<Packet | null>(null);
@@ -179,6 +185,7 @@ export function LabShell({
   description,
   workspace,
   roles = defaultRoles,
+  loadingContent,
   children,
 }: {
   title: string;
@@ -186,6 +193,7 @@ export function LabShell({
   description: string;
   workspace: LabWorkspace;
   roles?: Role[];
+  loadingContent?: ReactNode;
   children: ReactNode;
 }) {
   const {
@@ -201,6 +209,7 @@ export function LabShell({
   } = workspace;
   const dialog = useRef<HTMLDialogElement>(null);
   const resetTrigger = useRef<HTMLButtonElement>(null);
+  const [resetFocusPending, setResetFocusPending] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(null);
   useEffect(() => {
     const update = () =>
@@ -217,6 +226,11 @@ export function LabShell({
     return () => window.clearInterval(timer);
   }, [packet?.expiresAt]);
   const disabled = busy || needsRefresh;
+  useEffect(() => {
+    if (!resetFocusPending || disabled) return;
+    resetTrigger.current?.focus();
+    setResetFocusPending(false);
+  }, [disabled, resetFocusPending]);
   return (
     <DemoFrame
       title={title}
@@ -224,14 +238,17 @@ export function LabShell({
       description={description}
       className="labs-workspace"
     >
-      {packet && (
-        <div className="workspace-controls labs-toolbar">
+      {(packet || (!!loadingContent && !expired)) && (
+        <div
+          className="workspace-controls labs-toolbar"
+          aria-hidden={!packet || undefined}
+        >
           <div className="workspace-role field">
             <label htmlFor="labs-role">Demo role</label>
             <select
               id="labs-role"
-              value={packet.role}
-              disabled={disabled}
+              value={packet?.role ?? roles[0]}
+              disabled={disabled || !packet}
               onChange={(event) =>
                 void act(
                   "role",
@@ -249,18 +266,20 @@ export function LabShell({
           </div>
           <p>
             Fictional data ·{" "}
-            {remaining === null
-              ? "Session active"
-              : remaining > 0
-                ? `Expires in ${remaining} min`
-                : "Session expired"}
+            {!packet
+              ? "Loading session"
+              : remaining === null
+                ? "Session active"
+                : remaining > 0
+                  ? `Expires in ${remaining} min`
+                  : "Session expired"}
             <br />
             <small>Isolated to this demo workspace in your browser.</small>
           </p>
           <div className="button-row">
             <Button
               variant="secondary"
-              disabled={busy}
+              disabled={busy || !packet}
               onClick={() => void refresh()}
             >
               Refresh workspace
@@ -269,7 +288,7 @@ export function LabShell({
               type="button"
               className="button secondary"
               ref={resetTrigger}
-              disabled={disabled}
+              disabled={disabled || !packet}
               onClick={() => dialog.current?.showModal()}
             >
               Reset demo
@@ -301,6 +320,8 @@ export function LabShell({
         </Card>
       ) : packet ? (
         children
+      ) : loadingContent && !error ? (
+        loadingContent
       ) : (
         <Card className="labs-empty">
           <h2>
@@ -355,7 +376,9 @@ export function LabShell({
                 "reset",
                 {},
                 "Workspace reset with fresh sample data.",
-              ).finally(() => resetTrigger.current?.focus());
+              ).then((next) => {
+                if (next) setResetFocusPending(true);
+              });
             }}
           >
             Confirm reset

@@ -64,6 +64,7 @@ export function Header() {
             ["/portfolio", "Concepts"],
             ["/about", "About"],
             ["/demo", "Demos"],
+            ["/pricing", "Pricing"],
           ].map(([href, label]) => (
             <Link
               key={href}

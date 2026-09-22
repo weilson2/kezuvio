@@ -1,0 +1,213 @@
+.interior-app {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.interior-app .button {
+  white-space: normal;
+  font-size: 0.84rem;
+}
+.interior-loading {
+  pointer-events: none;
+}
+.interior-loading .interior-loading-value,
+.interior-loading .demo-stats strong {
+  visibility: hidden;
+}
+.interior-loading-label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+.interior-loading-control {
+  display: block;
+  min-height: 46px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
+}
+.interior-loading-cost {
+  display: grid;
+  gap: 10px;
+}
+.interior-heading,
+.interior-card-top,
+.interior-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.interior-heading {
+  margin: 22px 0;
+}
+.interior-heading h2 {
+  margin: 8px 0;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  letter-spacing: -0.035em;
+}
+.interior-heading p {
+  max-width: 68ch;
+}
+.interior-nav,
+.interior-toolbar .labs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.interior-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  align-items: start;
+}
+.interior-stack,
+.interior-grid,
+.interior-fields,
+.interior-card {
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+}
+.interior-grid,
+.interior-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.interior-card {
+  padding: clamp(18px, 2.5vw, 26px);
+  align-content: start;
+}
+.interior-card h3 {
+  font-size: 1.1rem;
+}
+.interior-fields {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.interior-app .field,
+.interior-app input,
+.interior-app select {
+  min-width: 0;
+  width: 100%;
+}
+.interior-scene-frame {
+  height: 480px;
+  width: 100%;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #e9e9f3;
+}
+.interior-scene-frame canvas {
+  display: block;
+  touch-action: none;
+}
+.interior-scene-fallback {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 26px;
+  text-align: center;
+  color: #18213a;
+  gap: 12px;
+}
+.interior-scene-fallback h3 {
+  font-size: 1.3rem;
+}
+.interior-scene-caption,
+.interior-muted,
+.interior-app small {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.interior-scene-caption {
+  margin-top: 12px;
+}
+.interior-catalog {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.interior-catalog-card {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  align-content: start;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.interior-swatch {
+  height: 10px;
+  border-radius: 6px;
+}
+.interior-object {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.interior-object[data-selected="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.interior-notice,
+.interior-feedback {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.interior-feedback {
+  border-color: var(--accent);
+}
+.interior-error {
+  color: var(--error);
+}
+.interior-price {
+  font-size: 1.4rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.interior-cost-lines {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.interior-cost-lines li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+@media (max-width: 1050px) {
+  .interior-layout {
+    grid-template-columns: 1fr;
+  }
+  .interior-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .interior-grid,
+  .interior-fields,
+  .interior-catalog {
+    grid-template-columns: 1fr;
+  }
+  .interior-scene-frame {
+    height: 340px;
+  }
+  .interior-card {
+    padding: 16px;
+  }
+}

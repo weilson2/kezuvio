@@ -1,12 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/site";
 import { BrandWorkbench } from "@/components/brand-workbench";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Brand foundation",
   description:
     "Kezuvio Labs identity, vector logos, color palette, typography and reusable component specimens.",
   robots: { index: false, follow: false },
-};
+},"/brand");
 export default function Brand() {
   return (
     <>

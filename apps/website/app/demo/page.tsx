@@ -1,15 +1,87 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@kezuvio/ui";
 import { PageIntro } from "@/components/site";
 import { demos } from "@/lib/demo/catalog";
 import "./demo.css";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Interactive demo portal",
   description:
-    "Try fictional business software demonstrations, including AI Automation Hub, Commerce Studio and café POS with independent saved workspaces.",
+    "Try fictional business software demonstrations, including Property CRM, AI Automation Hub, Commerce Studio and café POS with independent saved workspaces.",
   alternates: { canonical: "/demo" },
-};
+},"/demo");
+
+const portalDemos: typeof demos = [
+  ...demos,
+  {
+    slug: "interior-3d",
+    name: "Interior 3D Studio",
+    category: "Room design & configuration",
+    description:
+      "Arrange original furniture models, preview room finishes and save an illustrative design with an itemised estimate.",
+    icon: "layers",
+    features: [
+      "Interactive 3D room",
+      "Furniture configuration",
+      "Saved designs & estimates",
+    ],
+    color: "clay",
+  },
+  {
+    slug: "accounting-cloud",
+    name: "Accounting Cloud",
+    category: "Journals & reporting",
+    description:
+      "Post fictional double-entry transactions, settle invoices and reconcile reports in an independent saved workspace.",
+    icon: "layers",
+    features: [
+      "Balanced journals",
+      "Receivables & payables",
+      "Reconciled statements",
+    ],
+    color: "indigo",
+  },
+  {
+    slug: "commerce-studio",
+    name: "Commerce Studio",
+    category: "Commerce & inventory",
+    description:
+      "Manage fictional products, simulate checkout and track orders through fulfilment in a saved shop workspace.",
+    icon: "layers",
+    features: [
+      "Product & stock management",
+      "Mock checkout",
+      "Seller dashboard",
+    ],
+    color: "indigo",
+  },
+  {
+    slug: "automation-hub",
+    name: "AI Automation Hub",
+    category: "Inquiry & workflow",
+    description:
+      "Turn a fictional inquiry into a reviewed quotation using local rules and a working task queue.",
+    icon: "spark",
+    features: [
+      "Requirements analysis",
+      "Quotation approval",
+      "Follow-up tracking",
+    ],
+    color: "clay",
+  },
+  {
+    slug: "property-crm",
+    name: "Property CRM",
+    category: "Listings & sales",
+    description:
+      "Manage fictional Malaysian listings, assign leads and schedule viewings in a saved workspace.",
+    icon: "web",
+    features: ["Listings & leads", "Sales pipeline", "Viewing appointments"],
+    color: "forest",
+  },
+];
+
 export default function DemoPortal() {
   return (
     <>
@@ -22,38 +94,15 @@ export default function DemoPortal() {
         <div className="portal-notice">
           <span className="demo-pill">DEMO MODE</span>
           <p>
-            All payments and messages are simulated. Café POS, Commerce Studio
-            and AI Automation Hub each have their own saved workspace; the five
-            legacy demos share a one-hour workspace in this browser. Each
-            workspace can be reset from its demo controls.
+            All payments and messages are simulated. Café POS, Commerce Studio,
+            AI Automation Hub, Property CRM, Accounting Cloud and Interior 3D
+            Studio each have their own saved workspace. The five legacy demos
+            share a one-hour workspace in this browser. Each workspace can be
+            reset from its demo controls.
           </p>
         </div>
-        <article className="demo-panel" style={{ marginBottom: 24 }}>
-          <span className="eyebrow">New / Commerce Studio</span>
-          <h2>One shop. Every step connected.</h2>
-          <p>
-            Manage fictional products and stock, shop the catalogue, simulate
-            checkout and follow orders through fulfilment. Explore the seller
-            dashboard in an independent saved workspace.
-          </p>
-          <Link href="/demo/commerce-studio" className="button">
-            Try Commerce Studio <Icon name="arrow" />
-          </Link>
-        </article>
-        <article className="demo-panel" style={{ marginBottom: 24 }}>
-          <span className="eyebrow">New / AI Automation Hub</span>
-          <h2>From inquiry to a reviewed quotation.</h2>
-          <p>
-            Explore deterministic requirements analysis, editable pricing, a
-            working task queue and follow-up tracking. A person approves every
-            quotation before it can be marked ready. No messages are sent.
-          </p>
-          <Link href="/demo/automation-hub" className="button">
-            Try AI Automation Hub <Icon name="arrow" />
-          </Link>
-        </article>
         <div className="demo-portal-grid">
-          {demos.map((demo, i) => (
+          {portalDemos.map((demo, i) => (
             <article className="demo-portal-card" key={demo.slug}>
               <div
                 className={`portal-art tone-${demo.color}`}

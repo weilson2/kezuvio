@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/site";
 import { siteUrl } from "@/lib/content";
+import { DevelopmentAnalytics } from "@/components/development-analytics";
+import { jsonLd } from "@/lib/seo";
 import "../../../packages/brand/tokens.css";
 import "../../../packages/brand/base.css";
 import "./styles.css";
@@ -48,14 +50,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLd({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Kezuvio Labs",
+              url: siteUrl,
+              description:
+                "A proposed Malaysian software studio with fictional interactive product demonstrations.",
+            }),
+          }}
+        />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <DevelopmentAnalytics />
       </body>
     </html>
   );

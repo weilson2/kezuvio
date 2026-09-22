@@ -13,6 +13,9 @@ import {
 import { cafeModule } from "../../../../packages/cafe/index";
 import { commerceModule } from "../../../../packages/commerce/index";
 import { automationModule } from "../../../../packages/automation/index";
+import { propertyModule } from "../../../../packages/property/index";
+import { accountingModule } from "../../../../packages/accounting/index";
+import { interiorModule } from "../../../../packages/interior/index";
 
 const shared = globalThis as typeof globalThis & {
   kezuvioLabsDb?: ReturnType<typeof createDatabase>;
@@ -23,6 +26,9 @@ function repository(product: string): DemoRepository {
     product !== "cafe-pos" &&
     product !== "commerce-studio" &&
     product !== "automation-hub" &&
+    product !== "property-crm" &&
+    product !== "accounting-cloud" &&
+    product !== "interior-3d" &&
     (process.env.LABS_ACCEPTANCE_MODE !== "1" ||
       !["platform-check", "platform-other"].includes(product))
   )
@@ -35,7 +41,13 @@ function repository(product: string): DemoRepository {
       ? createRepository(db, commerceModule)
       : product === "automation-hub"
         ? createRepository(db, automationModule)
-        : createRepository(db, { ...platformFixture, id: product });
+        : product === "property-crm"
+          ? createRepository(db, propertyModule)
+          : product === "accounting-cloud"
+            ? createRepository(db, accountingModule)
+            : product === "interior-3d"
+              ? createRepository(db, interiorModule)
+              : createRepository(db, { ...platformFixture, id: product });
 }
 function json(body: unknown, status = 200) {
   return NextResponse.json(body, {

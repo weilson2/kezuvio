@@ -10,6 +10,23 @@ export const services: {
   fit: string;
 }[] = [
   {
+    slug: "ai-automation",
+    title: "AI automation",
+    short: "Clear steps. Human decisions.",
+    description:
+      "Explore reviewed inquiry, document and internal task workflows before activating real integrations.",
+    icon: "spark",
+    detail:
+      "Start with a repeatable task, an agreed success measure and the information people need to review the result. Our local Automation Hub demonstrates explainable rules, quotation drafts, approval and follow-ups; a paid AI model or external messaging service is a separate scoped decision.",
+    features: [
+      "Requirements and workflow mapping",
+      "Human-reviewed drafts and approvals",
+      "Bounded task retries and audit history",
+      "Integration and operating-cost assessment",
+    ],
+    fit: "Malaysian SMEs exploring repetitive inquiry, document or operations tasks while retaining human responsibility for decisions.",
+  },
+  {
     slug: "web-development",
     title: "Web development",
     short: "A better first impression.",

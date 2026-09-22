@@ -1,0 +1,190 @@
+.operations-app {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.operations-app .button {
+  white-space: normal;
+  font-size: 0.84rem;
+}
+.operations-heading,
+.operations-card-top,
+.operations-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.operations-heading {
+  margin: 28px 0;
+}
+.operations-heading h2 {
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  letter-spacing: -0.035em;
+}
+.operations-grid,
+.operations-fields,
+.operations-role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  min-width: 0;
+}
+.operations-role-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.operations-stack,
+.operations-card,
+.operations-form {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  align-content: start;
+}
+.operations-card,
+.operations-form {
+  padding: clamp(18px, 2.7vw, 30px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.operations-app .labs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.operations-app .button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.operations-app .demo-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 165px), 1fr));
+  gap: 16px;
+}
+.operations-app .demo-stats > div {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  background: var(--surface);
+}
+.operations-app .demo-stats span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.operations-app .demo-stats strong {
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+.operations-app .demo-empty {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+}
+.operations-card h3,
+.operations-form h2,
+.operations-form h3 {
+  font-size: 1.1rem;
+}
+.operations-fields {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.operations-app .field,
+.operations-app input,
+.operations-app select {
+  min-width: 0;
+  width: 100%;
+}
+.operations-span {
+  grid-column: 1 / -1;
+}
+.operations-app small,
+.operations-muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.operations-notice {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: 18px;
+  font-size: 0.88rem;
+}
+.operations-error {
+  border-color: var(--error);
+  color: var(--error);
+}
+.operations-login {
+  max-width: 650px;
+}
+.operations-login .button {
+  justify-self: start;
+}
+.operations-checks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.operations-logs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.operations-logs li {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-width: 0;
+}
+.operations-logs pre {
+  margin: 10px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  font-family: ui-monospace, monospace;
+}
+.operations-logs details summary {
+  cursor: pointer;
+}
+.operations-task-list {
+  margin-top: 28px;
+}
+.operations-filters {
+  margin: 24px 0;
+  max-width: 450px;
+}
+.operations-metrics {
+  margin: 26px 0;
+}
+.operations-role-grid article p {
+  font-size: 0.88rem;
+}
+@media (max-width: 900px) {
+  .operations-role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .operations-grid,
+  .operations-fields,
+  .operations-role-grid {
+    grid-template-columns: 1fr;
+  }
+  .operations-card,
+  .operations-form {
+    padding: 18px;
+  }
+}

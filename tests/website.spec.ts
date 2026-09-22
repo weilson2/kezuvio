@@ -201,15 +201,19 @@ test("internal links resolve, metadata exists, assets load and errors stay absen
           .filter((h) => h.startsWith("/")),
       );
     hrefs.forEach((h) => links.add(h.split("#")[0]));
-    expect(
-      await page
-        .locator("img")
-        .evaluateAll((nodes) =>
-          nodes
-            .filter((n) => !n.complete || n.naturalWidth === 0)
-            .map((n) => n.src),
-        ),
-    ).toEqual([]);
+    // Product screenshots load lazily; bring each into view before verifying decoding.
+    for (const image of await page.locator("img").all()) {
+      if (await image.isVisible()) await image.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() =>
+          image.evaluate(
+            (node) =>
+              (node as HTMLImageElement).complete &&
+              (node as HTMLImageElement).naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+    }
   }
   for (const href of links)
     expect((await request.get(href)).status(), href).toBe(200);

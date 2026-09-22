@@ -3,14 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button, Field, Icon, TextArea } from "@kezuvio/ui";
 import { services } from "@/lib/content";
+import { draftPackages } from "@/lib/studio-content";
 type Errors = Record<string, string>;
 export function ContactForm({ email }: { email: string }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<Errors>({});
   const [brief, setBrief] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [packageName, setPackageName] = useState("");
   useEffect(() => {
     const requested = new URLSearchParams(location.search).get("service");
+    const packageId = new URLSearchParams(location.search).get("package");
+    setPackageName(
+      draftPackages.find((item) => item.id === packageId)?.name || "",
+    );
     if (requested && services.some((s) => s.slug === requested)) {
       const select = formRef.current?.elements.namedItem(
         "service",
@@ -54,8 +60,9 @@ export function ContactForm({ email }: { email: string }) {
       services.find((s) => s.slug === data.get("service"))?.title ||
       "Help me choose";
     setBrief(
-      `PROJECT ENQUIRY — KEZUVIO LABS\n\nName: ${name}\nEmail: ${address}\nBusiness: ${company || "Not provided"}\nInterested in: ${service}\n\n${message}\n\nPrepared locally. Not sent.`,
+      `PROJECT ENQUIRY — KEZUVIO LABS\n\nName: ${name}\nEmail: ${address}\nBusiness: ${company || "Not provided"}\nInterested in: ${service}\n${packageName ? `Draft package: ${packageName}\n` : ""}\n${message}\n\nPrepared locally. Not sent.`,
     );
+    window.dispatchEvent(new CustomEvent("kezuvio:contact-prepared"));
   }
   function download() {
     const url = URL.createObjectURL(
@@ -97,6 +104,12 @@ export function ContactForm({ email }: { email: string }) {
         Prepare a project brief on this device. This form does not send messages
         or store your details on a server.
       </div>
+      {packageName && (
+        <p className="notice">
+          Requested draft package: <strong>{packageName}</strong>. Scope and
+          price require review.
+        </p>
+      )}
       <div className="form-row">
         <Field
           id="name"

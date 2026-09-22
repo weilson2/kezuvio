@@ -1,12 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/site";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy information",
   description:
     "How the local Kezuvio website preview handles enquiry details and theme preferences.",
   alternates: { canonical: "/privacy" },
-};
+},"/privacy");
 export default function Privacy() {
   return (
     <>

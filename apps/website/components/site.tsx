@@ -19,6 +19,8 @@ export function Footer() {
           <Link href="/services">Services</Link>
           <Link href="/portfolio">Concept portfolio</Link>
           <Link href="/about">About the studio</Link>
+          <Link href="/pricing">Draft service packages</Link>
+          <Link href="/faq">Frequently asked questions</Link>
         </div>
         <div>
           <h3>Start a conversation</h3>
@@ -27,6 +29,7 @@ export function Footer() {
           </Link>
           <Link href="/demo">Demo availability</Link>
           <Link href="/brand">Brand foundation</Link>
+          <Link href="/request-quotation">Prepare a quotation brief</Link>
         </div>
       </div>
       <div className="container footer-bottom">

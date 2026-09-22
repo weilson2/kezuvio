@@ -1,11 +1,14 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { CTA, PageIntro, Principle } from "@/components/site";
-export const metadata: Metadata = {
+import Link from "next/link";
+import "@/components/studio.css";
+export const metadata: Metadata = pageMetadata({
   title: "About the studio",
   description:
     "The idea behind Kezuvio Labs: thoughtful digital tools for growing Malaysian businesses.",
   alternates: { canonical: "/about" },
-};
+},"/about");
 export default function About() {
   return (
     <>
@@ -69,6 +72,53 @@ export default function About() {
           intended services and independent design concepts; it does not claim
           company registration, trademark clearance or a client track record.
         </p>
+      </section>
+      <section
+        className="section container studio-approach"
+        aria-labelledby="studio-working-method"
+      >
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">From an idea to a working flow</span>
+            <h2 id="studio-working-method">Make the work reviewable.</h2>
+          </div>
+        </div>
+        <div className="studio-approach-grid">
+          <article>
+            <span className="eyebrow">01 / Understand</span>
+            <h3>Start with a clear brief.</h3>
+            <p>
+              Map the people, decisions and information involved in a workflow.
+              A useful first release has an agreed scope, explicit exclusions
+              and observable acceptance criteria.
+            </p>
+          </article>
+          <article>
+            <span className="eyebrow">02 / Demonstrate</span>
+            <h3>Show the actual interaction.</h3>
+            <p>
+              Our six software demonstrations let you explore ordering, sales,
+              quotations, property leads, accounting and room design with
+              fictional data. They make product conversations more concrete.
+            </p>
+            <Link href="/portfolio#software-demos" className="text-link">
+              Explore working demonstrations
+            </Link>
+          </article>
+          <article>
+            <span className="eyebrow">03 / Review</span>
+            <h3>Keep people in the decision.</h3>
+            <p>
+              Review a working increment, its test evidence and known
+              limitations before committing to the next release. Real
+              integrations, commercial terms and launch arrangements need their
+              own review.
+            </p>
+            <Link href="/request-quotation" className="text-link">
+              Prepare a project brief
+            </Link>
+          </article>
+        </div>
       </section>
       <CTA />
     </>

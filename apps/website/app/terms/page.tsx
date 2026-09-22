@@ -1,12 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/site";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Website terms",
   description:
     "Draft information about the provisional Kezuvio brand, concept portfolio and enquiry preview.",
   alternates: { canonical: "/terms" },
-};
+},"/terms");
 export default function Terms() {
   return (
     <>

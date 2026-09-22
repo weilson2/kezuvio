@@ -1,8 +1,18 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+import { pageMetadata } from "@/lib/seo";
+export const metadata: Metadata = pageMetadata(
+  {
+    title: "Kezuvio Labs — Websites, software & practical demos",
+    description:
+      "Explore website, POS, CRM and supervised automation workflows for Malaysian SMEs, with six fictional software demonstrations.",
+    alternates: { canonical: "/" },
+  },
+  "/",
+);
 import { Icon } from "@kezuvio/ui";
 import { CTA, ProductVisual, ServiceGrid } from "@/components/site";
+import { StudioSummary } from "@/components/studio-showcase";
 export default function Home() {
   return (
     <>
@@ -97,6 +107,7 @@ export default function Home() {
         </div>
         <ServiceGrid />
       </section>
+      <StudioSummary />
       <section className="approach-section">
         <div className="container approach-grid">
           <div>

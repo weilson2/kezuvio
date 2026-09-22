@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { services } from "@/lib/content";
 import { PageIntro, CTA } from "@/components/site";
 import { Card, Icon } from "@kezuvio/ui";
+import { pageMetadata } from "@/lib/seo";
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -14,11 +15,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((s) => s.slug === slug);
-  return {
-    title: s?.title || "Service not found",
-    description: s?.description,
-    alternates: { canonical: `/services/${slug}` },
-  };
+  return pageMetadata(
+    {
+      title: s?.title || "Service not found",
+      description: s?.description,
+      alternates: { canonical: `/services/${slug}` },
+    },
+    `/services/${slug}`,
+  );
 }
 export default async function Service({
   params,

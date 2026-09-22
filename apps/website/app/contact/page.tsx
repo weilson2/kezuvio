@@ -1,14 +1,16 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageIntro } from "@/components/site";
 import { ContactForm } from "@/components/contact-form";
 import { Card, Icon } from "@kezuvio/ui";
 import { contactEmail, whatsapp } from "@/lib/content";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Start a conversation",
   description:
     "Prepare a project enquiry for Kezuvio Labs. Tell us about your business and the digital tools you have in mind.",
   alternates: { canonical: "/contact" },
-};
+},"/contact");
 export default function Contact() {
   return (
     <>
@@ -20,6 +22,13 @@ export default function Contact() {
       <section className="container content-bottom contact-grid">
         <aside className="contact-aside">
           <h2>A little context goes a long way.</h2>
+          <p><Link href="/inquiry-workflow">Try the fictional inquiry-to-proposal workflow</Link> to explore qualification, human review and follow-up without sending messages.</p>
+          <p>
+            Explore <Link href="/pricing">draft service packages</Link>, read
+            the <Link href="/faq">FAQ</Link> or{" "}
+            <Link href="/request-quotation">prepare a quotation brief</Link>{" "}
+            before deciding on scope.
+          </p>
           <p>
             Share the problem you want to solve, the people who will use it and
             any timing or budget considerations. A focused starting point helps

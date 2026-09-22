@@ -1,14 +1,16 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge, Icon } from "@kezuvio/ui";
 import { concepts } from "@/lib/content";
 import { CTA, PageIntro, ProductVisual } from "@/components/site";
-export const metadata: Metadata = {
-  title: "Concept portfolio",
+import { StudioShowcase } from "@/components/studio-showcase";
+export const metadata: Metadata = pageMetadata({
+  title: "Software demos & concept portfolio",
   description:
-    "Independent interface studies in booking, restaurant ordering and SME tools. Concept work, not client projects.",
+    "Explore six interactive software demonstrations and independent interface studies using fictional Malaysian business data.",
   alternates: { canonical: "/portfolio" },
-};
+},"/portfolio");
 function BookingArt() {
   return (
     <div
@@ -65,10 +67,11 @@ export default function Portfolio() {
   return (
     <>
       <PageIntro
-        eyebrow="Independent concept work"
+        eyebrow="Independent development & concept work"
         title="A little imagination. A practical direction."
-        description="Interface studies exploring how everyday business tools could look and feel. These are original design concepts, not delivered client projects or working applications."
+        description="Six working software demonstrations and interface studies exploring everyday business tools. All data and businesses are fictional; these are original studio projects, not client case studies."
       />
+      <StudioShowcase />
       <section
         className="container content-bottom concept-list"
         aria-label="Concept portfolio"
@@ -96,7 +99,8 @@ export default function Portfolio() {
               <h3>{c.category}</h3>
               <p>{c.description}</p>
               <p className="field-help">
-                Visual study only. Explore the separate demo portal for interactive sample workflows.
+                Visual study only. Explore the separate demo portal for
+                interactive sample workflows.
               </p>
               <Link className="text-link" href="/contact">
                 Discuss a similar idea <Icon name="arrow" />
