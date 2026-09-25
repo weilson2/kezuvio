@@ -1,17 +1,19 @@
 # Agent roles, skills and MCP evaluation
 
-Prepared 5 November 2026. Root `AGENTS.md` now describes project conventions. Role and skill files below are **reviewable templates**, not registered runtime integrations. This session's `.codex` and `.agents` project directories are read-only under the managed permission profile; files are staged here rather than changing protected configuration or claiming activation.
+Updated 24 November 2026: M10 installed project-only role/skill definitions and documentation MCP. [Current evidence](../roadmap/M10-REPORT.md) supersedes the historical planning record below. Strict CLI startup0, public documentation MCP initialize/tools-list and ten installed skill copy checks passed. No global settings/permissions changed. The official validator now passes all20 source/installed skill folders using a hash-verified temporary PyYAML6.0.4 wheel; all ten project skills appear in the host catalogue. Live named-role dispatch was not tested. The initial missing-PyYAML record below is historical.
+
+Historical planning record, 5 November 2026. Root `AGENTS.md` now describes project conventions. Role and skill files below are **reviewable templates**, not registered runtime integrations. This session's `.codex` and `.agents` project directories are read-only under the managed permission profile; files are staged here rather than changing protected configuration or claiming activation.
 
 ## Team and orchestration
 
-| Role template | Responsibility | Handoff |
-| --- | --- | --- |
+| Role template              | Responsibility                 | Handoff                                                                     |
+| -------------------------- | ------------------------------ | --------------------------------------------------------------------------- |
 | `tooling/agents/alex.toml` | Project management/integration | Scoped assignments, dependency order, milestone evidence and open decisions |
-| `tooling/agents/sam.toml` | Software engineering | Domain/API implementation, migrations, tests and known limitations |
-| `tooling/agents/mia.toml` | UI/UX | Task flows, accessible interactions and evidence from rendered screens |
-| `tooling/agents/ada.toml` | QA/security | Independent reproduction, invariants, isolation/concurrency findings |
-| `tooling/agents/cleo.toml` | Marketing | Honest demonstration copy and route/claim checks |
-| `tooling/agents/ava.toml` | Business operations | Cost assumptions, readiness, support/reset and approval records |
+| `tooling/agents/sam.toml`  | Software engineering           | Domain/API implementation, migrations, tests and known limitations          |
+| `tooling/agents/mia.toml`  | UI/UX                          | Task flows, accessible interactions and evidence from rendered screens      |
+| `tooling/agents/ada.toml`  | QA/security                    | Independent reproduction, invariants, isolation/concurrency findings        |
+| `tooling/agents/cleo.toml` | Marketing                      | Honest demonstration copy and route/claim checks                            |
+| `tooling/agents/ava.toml`  | Business operations            | Cost assumptions, readiness, support/reset and approval records             |
 
 Current official Codex conventions use one TOML file per custom agent with `name`, `description` and `developer_instructions`. Templates inherit the parent's model, permissions and tools. They do not override sandbox settings. Activation, when filesystem permissions permit: review existing files, copy these templates without replacing unrelated definitions into `.codex/agents/`, and verify agent discovery in a new session. [Official subagent configuration](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
@@ -28,12 +30,12 @@ The skills are self-contained and use repository-relative context. They have no 
 
 `codex mcp list` was inspected without printing credentials. It listed existing desktop runtime integrations; the four candidate servers below were not configured by this task. A local Playwright dependency does not mean a Playwright MCP server is installed.
 
-| Candidate | Provenance and permissions | Decision |
-| --- | --- | --- |
-| OpenAI development documentation | Official read-only HTTPS server `https://developers.openai.com/mcp`; public documentation only | Optional useful addition; staged config below, no key required |
-| GitHub | Official `github/github-mcp-server`; authenticated repository tools can read/change account data | Defer until an actual remote/issue/PR task needs it; start read-only with minimal repository scope; keep tokens outside repo |
-| Playwright | Microsoft-owned `microsoft/playwright-mcp`; browser control can access pages and local resources | Defer: installed Playwright tests and current browser tools cover local QA; if later needed, isolated browser profile and localhost-focused work |
-| Context7 | Upstash-owned `upstash/context7`; third-party docs service, not framework authors | Defer: bundled Next.js and primary docs are sufficient; verify transport/auth/package before use |
+| Candidate                        | Provenance and permissions                                                                       | Decision                                                                                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| OpenAI development documentation | Official read-only HTTPS server `https://developers.openai.com/mcp`; public documentation only   | Optional useful addition; staged config below, no key required                                                                                   |
+| GitHub                           | Official `github/github-mcp-server`; authenticated repository tools can read/change account data | Defer until an actual remote/issue/PR task needs it; start read-only with minimal repository scope; keep tokens outside repo                     |
+| Playwright                       | Microsoft-owned `microsoft/playwright-mcp`; browser control can access pages and local resources | Defer: installed Playwright tests and current browser tools cover local QA; if later needed, isolated browser profile and localhost-focused work |
+| Context7                         | Upstash-owned `upstash/context7`; third-party docs service, not framework authors                | Defer: bundled Next.js and primary docs are sufficient; verify transport/auth/package before use                                                 |
 
 Sources: [OpenAI Docs MCP](https://developers.openai.com/learn/docs-mcp), [GitHub MCP](https://github.com/github/github-mcp-server), [Playwright MCP](https://github.com/microsoft/playwright-mcp), [Context7](https://github.com/upstash/context7).
 

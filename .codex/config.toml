@@ -1,0 +1,6 @@
+# Review and merge into project configuration when permitted; not active here.
+[agents]
+max_concurrent_threads_per_session = 2
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
