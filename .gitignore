@@ -9,4 +9,11 @@ playwright-report/
 .codex-attachments/
 .next/
 *.tsbuildinfo
+.dart_tool/
+**/build/
+**/android/local.properties
+**/android/key.properties
+*.jks
+*.keystore
+*.iml
 /.local/

@@ -1,6 +1,8 @@
 node_modules
 **/.next
 .git
+.codex
+.agents
 .local
 .codex-attachments
 tmp
@@ -8,6 +10,8 @@ test-results
 playwright-report
 **/.env*
 output
+outputs
+apps/ledger_lite
 documents
 assets/marketing
 docs/previews

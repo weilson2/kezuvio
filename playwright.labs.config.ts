@@ -2,6 +2,8 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests/labs",
   testMatch: "**/*.spec.ts",
+  // Login throttling is process-wide; exercise exhaustion in its own preview.
+  testIgnore: "**/operations-rate.spec.ts",
   outputDir: "./tmp/playwright-labs",
   fullyParallel: false,
   workers: 1,

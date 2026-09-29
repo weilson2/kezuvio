@@ -28,6 +28,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm audit --audit-level=high
       - run: node scripts/labs-ci-setup.mjs
       - run: npm run db:migrate:test
       - run: npm run db:generate
@@ -35,10 +36,17 @@ jobs:
       - run: npm run test:cafe
       - run: npm run test:commerce
       - run: npm run test:automation
+      - run: npm run test:property
+      - run: npm run test:accounting
+      - run: npm run test:interior
       - run: npx playwright install --with-deps chrome
       - run: npm run build
       - run: npm run typecheck
+      - run: npm run test:studio
+      - run: npm run test:operations
+      - run: node scripts/check-source-secrets.mjs
       - run: npm run test:labs
+      - run: npm run test:operations:rate
       - uses: actions/upload-artifact@v4
         if: always()
         with:
