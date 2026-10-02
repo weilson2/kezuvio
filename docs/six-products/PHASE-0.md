@@ -1,5 +1,7 @@
 # Six interactive products — Phase 0
 
+Current update, 24 November 2026: this document retains historical planning. The [master backlog](../roadmap/MASTER_BACKLOG.md) is authoritative. M1–M4 are accepted; local M5–M12 work is delivered in REVIEW under the user's explicit continuation authorization. Founder acceptance remains pending. No purchases, public deployment, production changes or external messages are authorized by implementation completion.
+
 Prepared 5 November 2026, Asia/Kuala_Lumpur. **Status: audit and planning delivered; new platform and Cafe MVP await plan approval.**
 
 **Implementation update, 9 November:** the user accepted M1/M2 automated and manual testing, approved closing both milestones, and authorized M3 Commerce Studio. M4 and later remain unapproved. See [M1/M2 verification](M1-M2-REPORT.md) and [current progress](PROGRESS.md); the original planning record below is historical.

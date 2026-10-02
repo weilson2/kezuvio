@@ -1,0 +1,62 @@
+{
+  "measuredAt": "2026-11-23T15:02:15.075Z",
+  "conditions": "Single navigation each, local headless Windows Chrome, no network/CPU throttling, SwiftShader software WebGL, fresh browser context. LCP/CLS are lab observations at capture, not field Core Web Vitals or physical-mobile FPS. No production capacity claim.",
+  "results": [
+    {
+      "route": "/portfolio",
+      "width": 375,
+      "ttfbMs": 22.700000047683716,
+      "domContentLoadedMs": 183.5,
+      "loadMs": 238.70000004768372,
+      "fcpMs": 524,
+      "lcpMs": 524,
+      "cls": 0.0005994,
+      "encodedScriptBytes": 154423,
+      "decodedScriptBytes": 518037,
+      "observedJsHeapBytes": 5015869,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "/demo/interior-3d",
+      "width": 375,
+      "ttfbMs": 16.299999952316284,
+      "domContentLoadedMs": 119.5,
+      "loadMs": 157.89999997615814,
+      "fcpMs": 176,
+      "lcpMs": 176,
+      "cls": 0,
+      "encodedScriptBytes": 406828,
+      "decodedScriptBytes": 1476083,
+      "observedJsHeapBytes": 11859373,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "/portfolio",
+      "width": 1440,
+      "ttfbMs": 8.200000047683716,
+      "domContentLoadedMs": 141.60000002384186,
+      "loadMs": 226.10000002384186,
+      "fcpMs": 160,
+      "lcpMs": 160,
+      "cls": 0.0010551898268711419,
+      "encodedScriptBytes": 170886,
+      "decodedScriptBytes": 569636,
+      "observedJsHeapBytes": 5847868,
+      "horizontalOverflow": false
+    },
+    {
+      "route": "/demo/interior-3d",
+      "width": 1440,
+      "ttfbMs": 7.800000071525574,
+      "domContentLoadedMs": 114.5,
+      "loadMs": 158.60000002384186,
+      "fcpMs": 132,
+      "lcpMs": 132,
+      "cls": 0.00011494671103395061,
+      "encodedScriptBytes": 413199,
+      "decodedScriptBytes": 1492393,
+      "observedJsHeapBytes": 13211358,
+      "horizontalOverflow": false
+    }
+  ]
+}

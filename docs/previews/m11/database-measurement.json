@@ -1,0 +1,98 @@
+{
+  "measuredAt": "2026-11-23T14:57:31.933Z",
+  "conditions": "Local Windows PostgreSQL18.6 dedicated test database, warm sequential reads, existing bounded aggregate dataset; no concurrent load test or production capacity inference.",
+  "results": [
+    {
+      "product": "cafe-pos",
+      "samples": 10,
+      "readP50Ms": 7.901399999999967,
+      "readP95Ms": 13.958099999999945,
+      "planNodes": [
+        "Result",
+        "Index Scan"
+      ],
+      "indexes": [
+        "documents_pkey"
+      ],
+      "actualRows": 1,
+      "planningMs": 0.051,
+      "executionMs": 0.019
+    },
+    {
+      "product": "commerce-studio",
+      "samples": 10,
+      "readP50Ms": 6.553899999999999,
+      "readP95Ms": 7.545600000000036,
+      "planNodes": [
+        "Result",
+        "Index Scan"
+      ],
+      "indexes": [
+        "documents_pkey"
+      ],
+      "actualRows": 1,
+      "planningMs": 0.046,
+      "executionMs": 0.014
+    },
+    {
+      "product": "automation-hub",
+      "samples": 10,
+      "readP50Ms": 6.565299999999979,
+      "readP95Ms": 7.497200000000021,
+      "planNodes": [
+        "Result",
+        "Index Scan"
+      ],
+      "indexes": [
+        "documents_pkey"
+      ],
+      "actualRows": 1,
+      "planningMs": 0.047,
+      "executionMs": 0.016
+    },
+    {
+      "product": "property-crm",
+      "samples": 10,
+      "readP50Ms": 6.366499999999974,
+      "readP95Ms": 7.038300000000049,
+      "planNodes": [
+        "Result",
+        "Seq Scan"
+      ],
+      "indexes": [],
+      "actualRows": 1,
+      "planningMs": 0.055,
+      "executionMs": 0.038
+    },
+    {
+      "product": "accounting-cloud",
+      "samples": 10,
+      "readP50Ms": 6.191899999999919,
+      "readP95Ms": 7.143400000000042,
+      "planNodes": [
+        "Result",
+        "Seq Scan"
+      ],
+      "indexes": [],
+      "actualRows": 1,
+      "planningMs": 0.04,
+      "executionMs": 0.014
+    },
+    {
+      "product": "interior-3d",
+      "samples": 10,
+      "readP50Ms": 6.106200000000058,
+      "readP95Ms": 7.032000000000039,
+      "planNodes": [
+        "Result",
+        "Index Scan"
+      ],
+      "indexes": [
+        "documents_pkey"
+      ],
+      "actualRows": 1,
+      "planningMs": 0.053,
+      "executionMs": 0.018
+    }
+  ]
+}

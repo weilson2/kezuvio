@@ -1,0 +1,12 @@
+{
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "navigationMs": 30.299999952316284,
+  "scriptEncodedBytes": 406249,
+  "scriptDecodedBytes": 1471707,
+  "usedJSHeapBytes": 17571641,
+  "elapsedToCaptureMs": 1205,
+  "environment": "Local Windows, headless installed Chrome, SwiftShader software WebGL; not a physical mobile benchmark"
+}

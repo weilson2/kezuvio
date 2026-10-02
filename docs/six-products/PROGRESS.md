@@ -1,11 +1,14 @@
 # Programme progress
 
-Updated 11 November 2026, Asia/Kuala_Lumpur.
+Updated 24 November 2026, Asia/Kuala_Lumpur. Current task-level status: [master backlog](../roadmap/MASTER_BACKLOG.md). Historical verification below retains its original dates.
+
+Latest authorization: the user asked to **work all until M12**. Proceed through local implementation/verification without intervening acceptance stops; delivered milestones remain REVIEW. Local work through M12 is delivered in REVIEW; see the [execution log](../roadmap/EXECUTION_LOG.md). This supersedes older stop-before-M6 wording below. Purchases, public deployment, production changes and external messages remain gated.
 
 - M1 shared platform and M2 Cafe POS: automated and manual acceptance approved by the user. Milestone closure includes the separately requested QR consolidation and shared demo layout, which are dependencies of the accepted Cafe UI.
 - M3 Commerce Studio: accepted and closed at `24e7a53` with tag `labs-m3-accepted-2026-11-09`. See [delivery and acceptance evidence](M3-REPORT.md).
 - M4 AI Automation Hub: manual acceptance completed. Closure is recorded by the annotated tag `labs-m4-accepted-2026-11-11`. See [implementation and verification](M4-REPORT.md).
-- M5 Property CRM: planning approved. Implementation awaits a separate decision.
+- M5 Property CRM: **REVIEW**. Existing implementation audited under the [11 November plan](M5-PLAN.md); the new-roadmap restore gap and workload/activity/focus issues are corrected. The [23 November handoff](../roadmap/M5-REVIEW-2026-11-23.md) records its288-case M5 verification and recovery evidence; the later M11 report supplies final programme verification and resolved dependency findings. Founder manual acceptance remains pending.
+- M6–M12 are **REVIEW**, with reports linked from the master backlog. [M11](../roadmap/M11-REPORT.md) records 400 passing cases, later affected verification, recovery/performance and honest limits. [M12](../roadmap/M12-REPORT.md) supplies the commercial pack and outstanding launch items. Founder acceptance is pending; no public/paid/production action was performed.
 
 Unrelated Ledger Lite files, its preview/scripts, website scroll change, navigation-scroll tests and Flutter ignore patterns remain outside the M1/M2 commit.
 
@@ -50,3 +53,21 @@ The user completed manual acceptance and authorized M4 closure. A fresh closure 
 The rollback path is to use a prior compatible application revision for an app-only rollback and keep additive schemas in place. If restoring data is necessary, first back up current state, restore the selected verified archive to a separate database with the original role mapping, and validate the matching application before any separately authorized connection switch. A switch to a pre-M4 snapshot would omit writes made after that snapshot. This rehearsal verified the database restore path. Application cutover and off-device recovery were outside the rehearsal.
 
 Closure staging included only M4 implementation, migration, tooling, tests, previews and acceptance documentation. The independent Ledger Lite work, its preview and script, the website scroll change, navigation-scroll test and Flutter ignore rules stayed outside the commit.
+
+## M5 authorization and backup
+
+The user approved the local MVP on 11 November. Before any Property migration, `npm.cmd run db:backup` restored and verified both local databases in separate scratch databases. The private manifest is `.local/postgresql/backups/2026-11-10T20-38-46-716Z-1197367a/manifest.json`. Each scratch restore matched its source snapshot and was removed. Existing databases stayed in place.
+
+## M5 review handoff
+
+The local Property CRM preview is running at `http://127.0.0.1:3000/demo/property-crm`. The final verification passed 283 distinct tests, including 39 Property tests and the website, Labs and Ledger Lite regressions. The report records the initial constraint and keyboard focus failures and their verified fixes. A viewing and its audit and idempotency data survived a graceful PostgreSQL restart. The working tree is unstaged for manual acceptance. Incremental paid-service cost is RM0.
+
+## 23 November — roadmap reconciliation and M5 review refresh
+
+Preserved the supplied roadmap in `docs/roadmap/MASTER_ROADMAP.md` and created the task-level master backlog through M12. Confirmed M1–M4 acceptance commits/tags and found M5 already implemented but unaccepted. Alex integrated two bounded Ada/Mia workers; no replacement of existing apps or extra repository. Corrected manager-only versioned restore to Unavailable, active-agent workload, identifiable Activity subjects and form focus return. Historical associations and server-derived scope remain intact; no new migration.
+
+Fresh results: Property 30 (19 domain/11 DB), platform 27, Cafe 30, Commerce 32, Automation 27, legacy domain 8, Labs browser/API 51, website/legacy browser/API 51, Ledger Lite 32 — **288 distinct tests passed**. Typecheck, brand and diff checks passed. Build initially stopped twice for the Next.js security reminder; direct prompt retry passed with warning. `npm audit --json` still reports Next moderate and Effect/Prisma-chain high findings. These are unresolved and explicitly disclosed in the current review report; no silent framework/Prisma upgrade or false clean-security claim.
+
+Read-only PostgreSQL audit verified separate dev/test environments, runtime restrictions, forced product RLS and already-applied Property migrations. A current backup restored/compared both databases in generated scratch databases; manifest `.local/postgresql/backups/2026-11-22T22-17-13-997Z-48afe162/manifest.json`. After browser servers stopped, a graceful restart retained the test viewing/session/history/idempotency data. Ordinary-preview smoke checks passed and the real API reproduced 3 open/1 Won/1 Lost, RM1,050,000.00 and 50.0%. Current screenshots were visually inspected.
+
+The ordinary preview and PostgreSQL remain running for manual review at `http://127.0.0.1:3000/demo/property-crm`; test preview stopped. Current build logs: `tmp/property-review-20261123.{stdout,stderr}.log`. Additional paid-service spend RM0; unrelated changes preserved; no files staged, commit/tag, external message, public deployment or production operation. M5 is REVIEW, not ACCEPTED. Await founder acceptance before M6; subsequent accepted gates follow the master roadmap without a new specification.

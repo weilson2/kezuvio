@@ -1,5 +1,7 @@
 # Implementation backlog
 
+Current update, 24 November 2026: this document retains historical planning. The [master backlog](../roadmap/MASTER_BACKLOG.md) is authoritative. M1–M4 are accepted; local M5–M12 work is delivered in REVIEW under the user's explicit continuation authorization. Founder acceptance remains pending. No purchases, public deployment, production changes or external messages are authorized by implementation completion.
+
 Status on 5 November 2026: M0 delivered; all subsequent rows planned. Estimates are engineering person-days, not elapsed agent runtime. Approve M1 and M2 together for the next implementation increment; complete Cafe acceptance before another product. Estimates by milestone match `PHASE-0.md`; individual task ranges are not additional costs.
 
 Update 9 November: the user accepted and approved closing M1/M2 and authorized M3 Commerce Studio. See [current progress](PROGRESS.md) and [M1/M2 evidence](M1-M2-REPORT.md). M4–M8 remain planning only; stop for review after M3.
@@ -62,7 +64,7 @@ Sam owns implementation; Ada verifies. Reuse the existing commerce interactions 
 
 Default queue execution is explicit user-triggered simulation backed by DB records. A continuously running worker/Redis requires a demonstrated need, cost update and infrastructure implementation. Do not label a static list as an executing queue. Sam implements; Ava validates workflow; Ada tests failures/retries.
 
-A01–A04 passed automated and manual acceptance. M4 closure is recorded in [programme progress](PROGRESS.md). M5 planning is authorized and implementation awaits approval.
+A01–A04 passed automated and manual acceptance. M4 closure is recorded in [programme progress](PROGRESS.md). The user subsequently approved local M5 implementation.
 
 ## M5 — Property CRM (5–8 days, after M4)
 
@@ -74,6 +76,8 @@ A01–A04 passed automated and manual acceptance. M4 closure is recorded in [pro
 | R04 | Analytics and acceptance | Counts/conversion/value totals derive from documented fixture definitions; role/isolation/reset and responsive tests |
 
 Sam implements; Mia checks accessible pipeline; Ada verifies. Reuse appointment conflict concepts, not the old all-products state.
+
+R01–R04 are implemented and verified. M5 awaits manual acceptance. See the [M5 report](M5-REPORT.md).
 
 ## M6 — Accounting Cloud (10–16 days, after M5)
 

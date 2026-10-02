@@ -1,0 +1,7 @@
+# M9 workflow and analytics contract
+
+Root took over Sam's assigned M9 files after the delegated worker hit its account usage limit. No upgrade/credit purchase attempted; Mia may continue her exclusive inquiry UI files.
+
+Client-safe `workflowFor(inquiryId,view)` in `packages/studio/inquiry-workflow.ts` returns null for absent/redacted inquiries. Otherwise returns `{inquiryId,stage,analysisId,quoteId,canReview,canPrepare,canFollowUp,steps:[{name,status:'done'|'current'|'pending'}]}`. Export `workflowStages` lists six labels: Inquiry, Qualification, Quotation Draft, Human Review, Approved Proposal, Follow-up. Progress is derived from current analysis, current quote revision/approval, Ready status and related followups. Stale approval/Rejected quote cannot grant Prepare or Follow-up. Server Automation actions remain authoritative. No new workflow persistence/platform/schema.
+
+`DevelopmentAnalytics` listens to local navigation, known demo/WhatsApp clicks and detail-free window events `kezuvio:contact-prepared` / `kezuvio:quotation-inquiry`. Dispatch quotation event only after successful fictional inquiry save. It writes at most200 validated `{name,path,at}` records to `kezuvio-development-events-v1`, strips queries, drops unknown routes/fields, runs only on loopback/localhost, sends no network data and stores no form text/email/phone/IP. Events describe local rehearsals, not real communications or approved production analytics. Unavailable/malformed/quota-exhausted localStorage cannot break product flows.

@@ -1,0 +1,15 @@
+# M9 — Acquisition, SEO and quotation workflow
+
+Status **REVIEW**, 23 November 2026. Continuation through M12 is authorized; founder acceptance and tags remain pending.
+
+Implemented canonical/social metadata, truthful Organization/FAQ structured data, marketing-only sitemap, private-route noindex and default indexing restrictions. Existing content supplies 13 FAQs and factual intended Malaysian service markets without invented offices, clients or ranking guarantees. Loopback analytics records six whitelisted event types in bounded browser storage, strips queries and form data, and makes no network requests.
+
+The separate `/inquiry-workflow` reuses Automation Hub persistence and actions for fictional inquiry → qualification → quotation draft → current-revision human review → approved unsent proposal → internal follow-up. Device-local contact briefs are never automatically imported. Approval of an old quotation revision does not authorize a changed proposal.
+
+Key files: `packages/studio/inquiry-workflow.ts`; `apps/website/lib/{development-analytics,seo}.ts`; analytics/inquiry components and route; page metadata/robots/sitemap; `tests/studio-domain.test.mjs`, `tests/studio.spec.ts`, `tests/labs/inquiry.spec.ts`. **No database migration.**
+
+Actual checks: fresh `npm.cmd run build`, `npm.cmd run typecheck`; `npm.cmd run test:studio` **10/10**; inquiry Playwright **9/9 in16.1s**; `$env:CI='1'; npm.cmd test` **61/61 browser plus8 legacy domain**, brand passed. Initial inquiry run7/9 exposed two incorrect expected prices in tests: the word “workflow” matches the existing automation rule. Correct expected seed quotation is **RM4,800**, or **RM4,320** with10%discount. Business rules were preserved; corrected tests assert matched requirement keys. Six populated viewport/theme accessibility checks passed.
+
+Manual review: [inquiry workflow](http://127.0.0.1:3000/inquiry-workflow), [FAQ](http://127.0.0.1:3000/faq), [draft packages](http://127.0.0.1:3000/pricing). Start the ordinary local preview after building. Submit only fictional `.test` data; qualify the brief “A fictional website with an online booking workflow.” Verify RM4,800; manager review the current revision; prepare an unsent proposal and internal follow-up. Change a quotation and confirm review is required again. Check noindex on private pages, canonical/social tags and 13 visible/schema FAQ answers. On loopback, inspect only `{name,path,at}` analytics entries; no query strings, phone numbers or brief contents.
+
+Limits: demo role selection is not production authentication; analytics is development-only and not a production consent/measurement system. Search indexing, rich results and rankings are never guaranteed. No customer delivery, external messaging or public publication activated. **Additional paid-service cost RM0**; subscription usage is unmeasured. Git remains at accepted M4 `1bc788e` with intended changes uncommitted and unrelated user edits preserved. Next milestone: M10 local tooling/operations.
