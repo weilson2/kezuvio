@@ -1,0 +1,45 @@
+Kezuvio GitHub source package verification
+Date: 26 November 2026 (Asia/Kuala_Lumpur)
+
+Deliverables
+- Folder: outputs/github-upload/kezuvio-labs
+- Archive: outputs/github-upload/kezuvio-labs-source.zip
+- One monorepo containing the studio website, six shared web products,
+  five legacy demos and the independent Ledger Lite Flutter application.
+- 254 files; 2,548,731 uncompressed bytes; archive 1,408,262 bytes.
+
+Checks performed
+- node scripts/prepare-github.mjs: PASS.
+- Recursive source inventory: PASS. No test/spec files, test directories,
+  integration tests, builds, node_modules, .git history, private environment
+  files, database contents, signing keys, caches or reports included.
+- Six credential-pattern checks against eligible text files: zero findings.
+  This is a bounded pattern scan, not proof of absence of all possible secrets.
+- Root package/lock dependencies and workspaces match: PASS.
+- Required build/runtime source, font license, complete Prisma migration
+  history and Android Gradle wrappers included: PASS.
+- Retained npm scripts reference included files: PASS.
+- ZIP entry count, .gitignore, .env.example and Android wrappers: PASS.
+- Independent read-only review: no blocking packaging issues found.
+- npm.cmd run build in tmp/github-upload-build-kbdq1V: PASS. Brand generation,
+  Prisma generation, Next.js compilation, TypeScript, and generation of all
+  41 static pages completed. Installed dependencies were linked from the
+  existing checkout solely for this temporary verification copy.
+
+Failed verification attempts / limitations
+- Initial sandboxed temporary dependency junction: EPERM.
+- npm.cmd ci --offline --ignore-scripts --no-audit --no-fund in the first
+  temporary verification folder: sandbox EPERM creating dependency folders.
+- Same offline install outside the sandbox: ENOTCACHED for zeptomatch 2.1.0,
+  with a cleanup EPERM warning. No dependency download or successful clean
+  installation is claimed. Build verification used installed dependencies.
+- No application/database/browser regression tests or Flutter builds run for
+  this packaging-only change. Application source is preserved unchanged.
+- Original dependency manifests/lockfiles retain development tooling.
+- Private operations brand utility is included as a runtime dependency;
+  unit/studio desk actions require omitted test suites, as stated in README.
+
+Original project and tests preserved. No Git commit, GitHub upload, public
+deployment, database migration or production-resource change performed.
+
+Archive SHA256: 8172DAB66A0C27D32F6BBEE4D71110610600D21D322B65D527890A7A224D1579
