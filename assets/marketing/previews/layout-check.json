@@ -1,0 +1,164 @@
+[
+  {
+    "name": "business-card-back-en.html",
+    "width": 1050,
+    "height": 600,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "business-card-back-zh.html",
+    "width": 1050,
+    "height": 600,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "business-card-front-en.html",
+    "width": 1050,
+    "height": 600,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "business-card-front-zh.html",
+    "width": 1050,
+    "height": 600,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "company-profile-cover-en.html",
+    "width": 1240,
+    "height": 1754,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "company-profile-cover-zh.html",
+    "width": 1240,
+    "height": 1754,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "facebook-ad-en.html",
+    "width": 1200,
+    "height": 630,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "facebook-ad-zh.html",
+    "width": 1200,
+    "height": 630,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-portrait-en.html",
+    "width": 1080,
+    "height": 1350,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-portrait-zh.html",
+    "width": 1080,
+    "height": 1350,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-square-en.html",
+    "width": 1080,
+    "height": 1080,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-square-zh.html",
+    "width": 1080,
+    "height": 1080,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-story-en.html",
+    "width": 1080,
+    "height": 1920,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "instagram-story-zh.html",
+    "width": 1080,
+    "height": 1920,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "quotation-cover-en.html",
+    "width": 1240,
+    "height": 1754,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "quotation-cover-zh.html",
+    "width": 1240,
+    "height": 1754,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "whatsapp-poster-en.html",
+    "width": 1080,
+    "height": 1350,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  },
+  {
+    "name": "whatsapp-poster-zh.html",
+    "width": 1080,
+    "height": 1350,
+    "overflow": [],
+    "overlaps": [],
+    "chineseFont": true,
+    "images": true
+  }
+]

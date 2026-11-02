@@ -1,0 +1,71 @@
+{
+  "environment": "Local Chrome, production build, fresh browser context per run, no CPU/network throttling. 1-second post-font observation; not field Web Vitals or Lighthouse scores.",
+  "results": [
+    {
+      "width": 1440,
+      "run": 1,
+      "fcpMs": 268,
+      "lcpMs": 268,
+      "observedLayoutShift": 0.0008913472074867113,
+      "domContentLoadedMs": 73.79999995231628,
+      "loadMs": 136.5999999642372,
+      "resourceRequests": 30,
+      "transferredBytes": 303178
+    },
+    {
+      "width": 1440,
+      "run": 2,
+      "fcpMs": 100,
+      "lcpMs": 100,
+      "observedLayoutShift": 0.0008913472074867113,
+      "domContentLoadedMs": 16.30000001192093,
+      "loadMs": 113.5,
+      "resourceRequests": 30,
+      "transferredBytes": 303178
+    },
+    {
+      "width": 1440,
+      "run": 3,
+      "fcpMs": 96,
+      "lcpMs": 96,
+      "observedLayoutShift": 0.0008913472074867113,
+      "domContentLoadedMs": 17,
+      "loadMs": 107.60000002384186,
+      "resourceRequests": 30,
+      "transferredBytes": 303178
+    },
+    {
+      "width": 375,
+      "run": 1,
+      "fcpMs": 148,
+      "lcpMs": 148,
+      "observedLayoutShift": 0.017008741666666667,
+      "domContentLoadedMs": 16,
+      "loadMs": 105.09999996423721,
+      "resourceRequests": 23,
+      "transferredBytes": 288864
+    },
+    {
+      "width": 375,
+      "run": 2,
+      "fcpMs": 96,
+      "lcpMs": 96,
+      "observedLayoutShift": 0.017008741666666667,
+      "domContentLoadedMs": 83.5,
+      "loadMs": 107.69999998807907,
+      "resourceRequests": 23,
+      "transferredBytes": 288864
+    },
+    {
+      "width": 375,
+      "run": 3,
+      "fcpMs": 96,
+      "lcpMs": 96,
+      "observedLayoutShift": 0.017008741666666667,
+      "domContentLoadedMs": 16.19999998807907,
+      "loadMs": 108.19999998807907,
+      "resourceRequests": 23,
+      "transferredBytes": 288864
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kezuvio-brand-presentation.pdf": {
+    "pages": 12,
+    "selectableCharactersPerPage": [
+      253,
+      534,
+      328,
+      427,
+      507,
+      578,
+      764,
+      586,
+      624,
+      784,
+      625,
+      479
+    ],
+    "embeddedFonts": {
+      "/AAAAAA+Inter-SemiBold": true,
+      "/BAAAAA+Inter-Regular": true,
+      "/CAAAAA+Inter-Bold": true,
+      "/DAAAAA+Arial-BoldMT": true,
+      "/EAAAAA+NotoSansSCThin-Regular": true,
+      "/FAAAAA+Arial-BoldMT": true,
+      "/GAAAAA+NotoSansSCThin-SemiBold": true,
+      "/HAAAAA+NotoSansSCThin-Bold": true,
+      "/IAAAAA+ArialMT": true
+    }
+  },
+  "kezuvio-delivery-report.pdf": {
+    "pages": 6,
+    "selectableCharactersPerPage": [
+      2022,
+      1746,
+      1350,
+      1617,
+      1130,
+      1579
+    ],
+    "embeddedFonts": {
+      "/AAAAAA+BitstreamVeraSans-Bold": true,
+      "/AAAAAA+BitstreamVeraSans-Roman": true
+    }
+  },
+  "marketingLayoutsPassed": 18,
+  "presentationLayoutsPassed": 12,
+  "pos-receipt.pdf": {
+    "pages": 1,
+    "sampleDisclaimer": true
+  },
+  "sample-invoice.pdf": {
+    "pages": 1,
+    "sampleDisclaimer": true
+  }
+}
