@@ -7,7 +7,7 @@ import "./demo.css";
 export const metadata: Metadata = {
   title: "Interactive demo portal",
   description:
-    "Try six fictional business software demonstrations: websites, commerce, QR ordering, POS, bookings and SME management.",
+    "Try six fictional business software demonstrations: websites, commerce, café POS with QR ordering, retail POS, bookings and SME management.",
   alternates: { canonical: "/demo" },
 };
 export default function DemoPortal() {
@@ -22,8 +22,9 @@ export default function DemoPortal() {
         <div className="portal-notice">
           <span className="demo-pill">DEMO MODE</span>
           <p>
-            Every checkout is simulated. Each browser session gets an isolated
-            workspace that expires after one hour. Reset it at any time.
+            Every checkout is simulated. Café POS has its own saved workspace;
+            the other five demos share a one-hour workspace in this browser.
+            Each workspace can be reset from its demo controls.
           </p>
         </div>
         <div className="demo-portal-grid">
@@ -74,7 +75,7 @@ export default function DemoPortal() {
                     Try Demo <Icon name="arrow" />
                   </Link>
                   <Link
-                    href={`/contact?service=${demo.slug === "pos" ? "pos-systems" : demo.slug === "business-website" ? "web-development" : demo.slug === "qr-ordering" ? "qr-ordering" : "custom-software"}`}
+                    href={`/contact?service=${demo.slug === "pos" || demo.slug === "cafe-pos" ? "pos-systems" : demo.slug === "business-website" ? "web-development" : "custom-software"}`}
                     className="text-link"
                   >
                     Request Quote

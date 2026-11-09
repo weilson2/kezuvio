@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Button, Icon } from "@kezuvio/ui";
 import { demos } from "@/lib/demo/catalog";
 import type { DemoState } from "@/lib/demo/engine";
 import { BusinessDemo } from "./business";
-import { QrDemo } from "./qr";
 import { BookingDemo } from "./booking";
 import { CommerceDemo } from "./commerce";
 import { ManagementDemo } from "./management";
+import { DemoFrame } from "./frame";
 type Packet = {
   state: DemoState;
   csrf: string;
@@ -84,126 +83,110 @@ export function DemoWorkspace({ slug }: { slug: string }) {
   }
   const props = packet ? { state: packet.state, busy, act } : null;
   return (
-    <div className="demo-page">
-      <div className="container demo-page-heading">
-        <Link href="/demo" className="text-link">
-          ← All demonstrations
-        </Link>
-        <div className="demo-title-row">
-          <div>
-            <span className="eyebrow">{demo.category}</span>
-            <h1>{demo.name}</h1>
-          </div>
-          <span className="demo-pill">DEMO MODE</span>
+    <DemoFrame
+      title={demo.name}
+      category={demo.category}
+      description={demo.description}
+    >
+      <div className="workspace-controls">
+        <div className="workspace-role field">
+          <label htmlFor="demo-role">Demo role</label>
+          <select
+            id="demo-role"
+            value={packet?.state.role || "manager"}
+            disabled={busy || !packet}
+            onChange={(e) =>
+              act(
+                "role",
+                { role: e.target.value },
+                "Demo role changed. Permissions are checked on the server.",
+              )
+            }
+          >
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
+            <option value="viewer">Viewer</option>
+          </select>
         </div>
-        <p>{demo.description}</p>
+        <p>
+          Fictional data · 1-hour session
+          <br />
+          <small>Shared across these demos in this browser.</small>
+        </p>
+        <div className="button-row">
+          <Button variant="secondary" disabled={busy} onClick={refresh}>
+            Refresh workspace
+          </Button>
+          <Button
+            variant="secondary"
+            disabled={busy || !packet}
+            onClick={() => setConfirmReset(!confirmReset)}
+          >
+            Reset demos
+          </Button>
+        </div>
       </div>
-      <section
-        className="container demo-workspace"
-        aria-label={`${demo.name} demonstration`}
-      >
-        <div className="workspace-controls">
-          <div className="workspace-role field">
-            <label htmlFor="demo-role">Demo role</label>
-            <select
-              id="demo-role"
-              value={packet?.state.role || "manager"}
-              disabled={busy || !packet}
-              onChange={(e) =>
-                act(
-                  "role",
-                  { role: e.target.value },
-                  "Demo role changed. Permissions are checked on the server.",
-                )
-              }
-            >
-              <option value="manager">Manager</option>
-              <option value="staff">Staff</option>
-              <option value="viewer">Viewer</option>
-            </select>
-          </div>
+      {confirmReset && (
+        <div className="reset-confirm">
           <p>
-            Fictional data · 1-hour session
-            <br />
-            <small>Shared across these demos in this browser.</small>
+            Reset the five shared demos in this browser to their original sample
+            data? Current sample changes will be removed.
           </p>
-          <div className="button-row">
-            <Button variant="secondary" disabled={busy} onClick={refresh}>
-              Refresh workspace
-            </Button>
-            <Button
-              variant="secondary"
-              disabled={busy || !packet}
-              onClick={() => setConfirmReset(!confirmReset)}
-            >
-              Reset demos
-            </Button>
-          </div>
+          <Button
+            disabled={busy}
+            onClick={async () => {
+              const result = await act(
+                "reset",
+                {},
+                "All demos reset to their original sample data.",
+              );
+              if (result) setConfirmReset(false);
+            }}
+          >
+            Confirm reset
+          </Button>
+          <Button variant="secondary" onClick={() => setConfirmReset(false)}>
+            Keep my changes
+          </Button>
         </div>
-        {confirmReset && (
-          <div className="reset-confirm">
-            <p>
-              Reset all six demos in this browser to their original sample data?
-              Current sample changes will be removed.
-            </p>
-            <Button
-              disabled={busy}
-              onClick={async () => {
-                const result = await act(
-                  "reset",
-                  {},
-                  "All demos reset to their original sample data.",
-                );
-                if (result) setConfirmReset(false);
-              }}
-            >
-              Confirm reset
-            </Button>
-            <Button variant="secondary" onClick={() => setConfirmReset(false)}>
-              Keep my changes
-            </Button>
-          </div>
-        )}
-        <div className="demo-feedback" aria-live="polite">
-          <span>{busy ? "Updating workspace…" : status}</span>
+      )}
+      <div className="demo-feedback" aria-live="polite">
+        <span>{busy ? "Updating workspace…" : status}</span>
+      </div>
+      {error && (
+        <div className="notice demo-error" role="alert">
+          {error}{" "}
+          <button onClick={refresh} disabled={busy}>
+            Refresh or start again
+          </button>
         </div>
-        {error && (
-          <div className="notice demo-error" role="alert">
-            {error}{" "}
-            <button onClick={refresh} disabled={busy}>
-              Refresh or start again
-            </button>
-          </div>
-        )}
-        {!props ? (
-          <div className="demo-loading">
-            <Icon name="layers" />
-            <p>
-              {error
-                ? "The workspace could not load. Use Refresh workspace to retry."
-                : "Preparing your sample workspace…"}
-            </p>
-          </div>
-        ) : slug === "business-website" ? (
-          <BusinessDemo {...props} />
-        ) : slug === "qr-ordering" ? (
-          <QrDemo {...props} />
-        ) : slug === "booking" ? (
-          <BookingDemo {...props} />
-        ) : slug === "sme-management" ? (
-          <ManagementDemo {...props} />
-        ) : (
-          <CommerceDemo {...props} kind={slug === "pos" ? "pos" : "shop"} />
-        )}
-        <div className="demo-disclaimer">
-          <Icon name="check" />
+      )}
+      {!props ? (
+        <div className="demo-loading">
+          <Icon name="layers" />
           <p>
-            No real payments, messages or business records. Role changes affect
-            only your sample workspace. Data clears on expiry, reset or server
-            restart. Do not enter personal or confidential information.
+            {error
+              ? "The workspace could not load. Use Refresh workspace to retry."
+              : "Preparing your sample workspace…"}
           </p>
         </div>
-      </section>
-    </div>
+      ) : slug === "business-website" ? (
+        <BusinessDemo {...props} />
+      ) : slug === "booking" ? (
+        <BookingDemo {...props} />
+      ) : slug === "sme-management" ? (
+        <ManagementDemo {...props} />
+      ) : (
+        <CommerceDemo {...props} kind={slug === "pos" ? "pos" : "shop"} />
+      )}
+      <div className="demo-disclaimer">
+        <Icon name="check" />
+        <p>
+          No real payments, messages or business records. Role changes affect
+          only your sample workspace. Data clears on expiry, reset or server
+          restart. Do not enter personal or confidential information.
+        </p>
+      </div>
+    </DemoFrame>
   );
 }

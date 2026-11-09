@@ -12,7 +12,6 @@ test.use({ viewport: { width: 375, height: 900 } });
 const slugs = [
   "business-website",
   "e-commerce",
-  "qr-ordering",
   "pos",
   "booking",
   "sme-management",
@@ -112,36 +111,6 @@ test("business theme and content update and reset restores the sample", async ({
   await expect(page.locator(".sample-hero h2")).toHaveText(
     "Space for your next good idea.",
   );
-});
-test("QR order moves from customer cart through all kitchen states", async ({
-  page,
-}) => {
-  await ready(page, "qr-ordering");
-  await page.getByLabel("Your table").selectOption("4");
-  await page.getByLabel("Kopi susu option").selectOption("Iced");
-  await page
-    .getByRole("button", { name: "Add Kopi susu", exact: true })
-    .click();
-  await expect(page.locator(".cart-panel")).toContainText("Iced");
-  await page.getByRole("button", { name: "Increase Kopi susu Iced" }).click();
-  await expect(page.locator(".cart-total")).toContainText("15.00");
-  await page.getByRole("button", { name: "Place simulated order" }).click();
-  await expect(page.locator(".record-list")).toContainText("Received");
-  await page.getByRole("button", { name: /Staff orders/ }).click();
-  for (const [action, status] of [
-    ["Start preparing", "Preparing"],
-    ["Mark ready", "Ready"],
-    ["Complete order", "Completed"],
-  ]) {
-    await page.getByRole("button", { name: action, exact: true }).click();
-    await expect(page.locator(".kitchen-ticket .status-tag")).toHaveText(
-      status,
-    );
-  }
-  await page
-    .getByRole("button", { name: "Customer menu", exact: true })
-    .click();
-  await expect(page.locator(".record-list")).toContainText("Completed");
 });
 test("booking creates, reschedules and cancels with simulated notifications", async ({
   page,

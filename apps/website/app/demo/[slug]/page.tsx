@@ -4,7 +4,9 @@ import { demos } from "@/lib/demo/catalog";
 import { DemoWorkspace } from "@/components/demos/workspace";
 import "../demo.css";
 export function generateStaticParams() {
-  return demos.map((d) => ({ slug: d.slug }));
+  return demos
+    .filter((d) => d.slug !== "cafe-pos")
+    .map((d) => ({ slug: d.slug }));
 }
 export async function generateMetadata({
   params,

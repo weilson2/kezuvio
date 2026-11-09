@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const config = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/demo/qr-ordering",
+        destination: "/demo/cafe-pos",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

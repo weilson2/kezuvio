@@ -1,0 +1,103 @@
+.labs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.labs-workspace .button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.labs-error {
+  padding: 16px;
+  margin: 12px 0 20px;
+  border: 1px solid var(--error);
+  border-radius: var(--radius-sm);
+}
+.labs-error p {
+  color: var(--error);
+}
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.labs-panel,
+.labs-empty {
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.labs-panel h2,
+.labs-empty h2,
+.labs-dialog h2 {
+  font-size: 1.5rem;
+}
+.labs-panel > .button,
+.labs-empty > .button {
+  align-self: flex-start;
+}
+.labs-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 0;
+}
+.labs-metrics dt {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.labs-metrics dd {
+  margin: 4px 0 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.labs-note {
+  display: grid;
+  gap: 16px;
+}
+.labs-note .button {
+  justify-self: start;
+}
+.labs-dialog {
+  width: min(540px, calc(100% - 32px));
+  max-height: calc(100dvh - 40px);
+  padding: 28px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+.labs-dialog::backdrop {
+  background: #0b1220a8;
+}
+.labs-dialog p {
+  margin: 18px 0 24px;
+}
+.labs-workspace input,
+.labs-workspace select {
+  min-width: 0;
+}
+.labs-workspace :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+@media (max-width: 800px) {
+  .labs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .labs-actions .button {
+    flex: 1;
+  }
+  .labs-dialog {
+    padding: 22px;
+  }
+  .labs-dialog .labs-actions {
+    flex-direction: column;
+  }
+}

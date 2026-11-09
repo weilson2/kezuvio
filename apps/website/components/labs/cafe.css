@@ -1,0 +1,911 @@
+.cafe-app {
+  margin-top: 8px;
+}
+.cafe-app h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+.cafe-app h3 {
+  font-size: 1.08rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+.cafe-app h4 {
+  font-size: 1.1rem;
+}
+.cafe-app p,
+.cafe-app li,
+.cafe-app td,
+.cafe-app th {
+  font-size: 0.875rem;
+}
+.cafe-app small {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.cafe-app strong,
+.cafe-app dd {
+  font-variant-numeric: tabular-nums;
+}
+.cafe-app .button {
+  font-size: 0.85rem;
+  white-space: normal;
+}
+.cafe-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 30px;
+}
+.cafe-nav button,
+.cafe-categories button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 12px 17px;
+  min-height: 44px;
+}
+.cafe-nav button[aria-pressed="true"] {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.cafe-nav button span {
+  margin-left: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.cafe-nav button:hover,
+.cafe-categories button:hover {
+  border-color: var(--control-border);
+}
+.cafe-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.cafe-section-heading h2 {
+  margin: 8px 0 10px;
+}
+.cafe-section-heading p {
+  max-width: 650px;
+}
+.cafe-overline {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.cafe-menu-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+  align-items: start;
+}
+.cafe-table-select {
+  min-width: 118px;
+  flex-shrink: 0;
+}
+.cafe-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+.cafe-categories button {
+  padding: 8px 15px;
+}
+.cafe-categories button[aria-pressed="true"] {
+  background: var(--surface-subtle);
+  border-color: var(--border);
+  color: var(--text);
+}
+.cafe-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.cafe-menu-item {
+  padding: 20px;
+  overflow: hidden;
+  min-width: 0;
+}
+.cafe-item-mark {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2.15rem;
+  background: var(--surface-subtle);
+  color: var(--accent);
+}
+.cafe-mark-food {
+  border-radius: 10px;
+  font-size: 1.9rem;
+}
+.cafe-mark-bakery {
+  border-radius: 14px 14px 6px 6px;
+}
+.cafe-item-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.cafe-menu-item h3 {
+  margin: 0 0 4px;
+}
+.cafe-menu-item > p {
+  margin-bottom: 18px;
+}
+.cafe-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cafe-item-bottom > strong {
+  font-size: 1.05rem;
+}
+.cafe-item-bottom .button {
+  padding-inline: 13px;
+  gap: 16px;
+}
+.cafe-low-stock {
+  color: var(--error) !important;
+}
+.cafe-cart-stack {
+  display: grid;
+  gap: 16px;
+  position: sticky;
+  top: 100px;
+}
+.cafe-cart {
+  padding: 24px;
+}
+.cafe-panel-heading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cafe-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 7px;
+  background: var(--surface-subtle);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.cafe-cart-lines {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.cafe-cart-lines li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+}
+.cafe-cart-lines small,
+.cafe-order-lines small {
+  display: block;
+  margin-top: 4px;
+}
+.cafe-quantity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cafe-quantity button {
+  width: 36px;
+  height: 44px;
+  background: var(--surface-subtle);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.cafe-quantity button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.cafe-quantity span {
+  min-width: 22px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.cafe-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+  font-size: 0.9rem;
+}
+.cafe-total strong {
+  font-size: 1.2rem;
+}
+.cafe-cart > .button {
+  width: 100%;
+}
+.cafe-fine-print {
+  color: var(--muted);
+  font-size: 0.75rem !important;
+  line-height: 1.6;
+}
+.cafe-cart > .cafe-fine-print {
+  margin-top: 14px;
+}
+.cafe-empty {
+  text-align: center;
+  padding: 36px 16px;
+  color: var(--muted);
+}
+.cafe-empty > span {
+  display: block;
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.cafe-empty h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.cafe-empty p {
+  max-width: 380px;
+  margin: 0 auto;
+}
+.cafe-qr {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+}
+.cafe-qr summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 28px;
+}
+.cafe-qr > div {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding-top: 16px;
+}
+.cafe-qr img {
+  background: white;
+  border-radius: 8px;
+}
+.cafe-qr a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding-block: 8px;
+}
+.cafe-qr p {
+  font-size: 0.75rem;
+}
+.cafe-orders-section {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.cafe-order-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.cafe-ticket {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  min-width: 0;
+}
+.cafe-ticket-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.cafe-ticket-heading h3,
+.cafe-ticket-heading h4 {
+  margin-bottom: 5px;
+}
+.cafe-status {
+  display: block;
+  text-align: right;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cafe-status-cancelled {
+  color: var(--error);
+}
+.cafe-payment-state {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+.cafe-order-lines {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.cafe-order-lines li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+.cafe-order-lines li + li {
+  border-top: 1px solid var(--border);
+}
+.cafe-order-lines b {
+  color: var(--accent);
+  margin-right: 3px;
+}
+.cafe-order-lines strong {
+  white-space: nowrap;
+}
+.cafe-live {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  padding-bottom: 4px;
+}
+.cafe-live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cafe-kitchen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.cafe-kitchen-lane {
+  background: var(--surface-subtle);
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-width: 0;
+}
+.cafe-lane-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 5px 16px;
+}
+.cafe-lane-heading h3 {
+  font-size: 0.9rem;
+}
+.cafe-lane-heading span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.cafe-lane-empty {
+  padding: 28px 10px;
+  text-align: center;
+}
+.cafe-kitchen-lane .cafe-ticket {
+  padding: 17px;
+  margin-bottom: 12px;
+}
+.cafe-kitchen-lane .cafe-ticket:last-child {
+  margin-bottom: 0;
+}
+.cafe-mini-status {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+.cafe-text-button {
+  color: var(--error);
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  min-height: 44px;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.cafe-text-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.cafe-kitchen-footnote {
+  margin-top: 20px;
+}
+.cafe-shift {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.cafe-shift h2 {
+  font-size: 1.25rem;
+  margin: 8px 0;
+}
+.cafe-open-shift {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+.cafe-open-shift .field {
+  max-width: 160px;
+}
+.cafe-cashier-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px;
+  align-items: start;
+}
+.cafe-order-list,
+.cafe-order-detail {
+  padding: 24px;
+  min-width: 0;
+}
+.cafe-order-selectors {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+.cafe-order-selectors button {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 16px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.cafe-order-selectors button.selected {
+  border-color: var(--accent);
+  box-shadow: inset 3px 0 var(--accent);
+  background: var(--surface-subtle);
+}
+.cafe-order-selectors button > span:last-child {
+  text-align: right;
+}
+.cafe-order-selectors small {
+  display: block;
+  margin-top: 6px;
+}
+.cafe-detail-summary .cafe-order-lines {
+  margin-top: 22px;
+}
+.cafe-tender {
+  border-top: 1px solid var(--border);
+  margin-top: 18px;
+  padding-top: 22px;
+  display: grid;
+  gap: 18px;
+}
+.cafe-field-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cafe-tender .cafe-total {
+  padding-bottom: 0;
+}
+.cafe-change {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cafe-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.cafe-checkbox input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+.cafe-receipt {
+  max-width: 410px;
+  margin: 28px auto 0;
+  padding: 28px;
+  border: 1px dashed var(--control-border);
+  background: var(--surface);
+}
+.cafe-receipt-brand {
+  text-align: center;
+  padding-bottom: 22px;
+  border-bottom: 1px dashed var(--border);
+}
+.cafe-receipt-brand > span {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.07em;
+}
+.cafe-receipt-brand h3 {
+  margin: 3px 0 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+}
+.cafe-receipt-brand p {
+  font-size: 0.65rem;
+}
+.cafe-receipt-reference {
+  padding: 20px 0 12px;
+  display: grid;
+  gap: 7px;
+  font-size: 0.8rem;
+}
+.cafe-receipt-reference > span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.cafe-receipt-totals {
+  margin: 12px 0 0;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border);
+}
+.cafe-receipt-totals > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.75rem;
+  padding: 6px 0;
+}
+.cafe-receipt-totals dd {
+  margin: 0;
+  text-align: right;
+}
+.cafe-receipt-totals .cafe-receipt-payable {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 0;
+}
+.cafe-refunded {
+  text-align: center;
+  margin: 18px 0;
+  font-weight: 700;
+  color: var(--error);
+}
+.cafe-receipt-thanks {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.65rem !important;
+}
+.cafe-receipt-actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.cafe-receipt-actions > .button {
+  justify-self: start;
+}
+.cafe-receipt-actions > p {
+  font-size: 0.75rem;
+}
+.cafe-refund-controls {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+.cafe-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.cafe-inventory-item {
+  min-width: 0;
+  padding: 22px;
+  display: grid;
+  gap: 20px;
+}
+.cafe-inventory-item h3 {
+  margin: 7px 0 4px;
+}
+.cafe-stock-counts {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+.cafe-stock-counts dt {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.cafe-stock-counts dd {
+  margin: 5px 0 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.cafe-inventory-item form {
+  display: grid;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.cafe-inventory-item .field label {
+  font-size: 0.7rem;
+}
+.cafe-inventory-item .field input {
+  font-size: 0.8rem;
+}
+.cafe-movement-heading {
+  margin-top: 36px;
+}
+.cafe-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.cafe-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 580px;
+}
+.cafe-table-wrap th,
+.cafe-table-wrap td {
+  padding: 16px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.cafe-table-wrap th {
+  background: var(--surface-subtle);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.cafe-table-wrap td {
+  background: var(--surface);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.cafe-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+.cafe-report-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+.cafe-report-metrics > div {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 24px;
+}
+.cafe-report-metrics dt {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.cafe-report-metrics dd {
+  margin: 14px 0 0;
+  font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+.cafe-report-metrics .featured {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.cafe-report-metrics .featured dt {
+  color: inherit;
+}
+.cafe-report-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 30px;
+  padding: 22px 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.cafe-report-context strong {
+  color: var(--text);
+}
+.cafe-report-note {
+  margin-top: 24px;
+}
+@media (max-width: 1100px) {
+  .cafe-menu-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 20px;
+  }
+  .cafe-kitchen-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cafe-inventory-grid,
+  .cafe-order-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cafe-report-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cafe-section-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 800px) {
+  .cafe-menu-layout,
+  .cafe-cashier-grid {
+    grid-template-columns: 1fr;
+  }
+  .cafe-cart-stack {
+    position: static;
+  }
+  .cafe-cart {
+    padding: 24px;
+  }
+  .cafe-order-grid {
+    grid-template-columns: 1fr;
+  }
+  .cafe-shift {
+    padding: 22px;
+  }
+  .cafe-section-heading {
+    gap: 16px;
+  }
+}
+@media (max-width: 520px) {
+  .cafe-menu-grid,
+  .cafe-inventory-grid,
+  .cafe-kitchen-grid {
+    grid-template-columns: 1fr;
+  }
+  .cafe-menu-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 16px;
+    padding: 20px;
+  }
+  .cafe-item-mark {
+    grid-row: 1 / 5;
+    margin: 0;
+    align-self: center;
+  }
+  .cafe-item-top {
+    grid-column: 2;
+  }
+  .cafe-menu-item h3,
+  .cafe-menu-item > p,
+  .cafe-item-bottom {
+    grid-column: 2;
+  }
+  .cafe-menu-item > p {
+    margin-bottom: 12px;
+  }
+  .cafe-nav {
+    gap: 4px;
+  }
+  .cafe-nav button {
+    padding-inline: 12px;
+    font-size: 0.8rem;
+  }
+  .cafe-open-shift {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .cafe-open-shift .field {
+    max-width: none;
+    flex: 1;
+    min-width: 150px;
+  }
+  .cafe-open-shift .button {
+    flex: 1;
+  }
+  .cafe-order-list,
+  .cafe-order-detail {
+    padding: 20px;
+  }
+  .cafe-field-pair {
+    grid-template-columns: 1fr;
+  }
+  .cafe-report-metrics {
+    gap: 12px;
+  }
+  .cafe-report-metrics > div {
+    padding: 18px 14px;
+  }
+  .cafe-receipt {
+    padding: 20px;
+  }
+  .cafe-ticket-heading {
+    gap: 12px;
+  }
+}
+@media print {
+  body:has(#cafe-receipt) {
+    background: white !important;
+    color: black !important;
+  }
+  body:has(#cafe-receipt) > :not(main),
+  body:has(#cafe-receipt) .demo-page-heading,
+  body:has(#cafe-receipt) .demo-disclaimer,
+  body:has(#cafe-receipt) .labs-toolbar,
+  body:has(#cafe-receipt) .labs-status,
+  body:has(#cafe-receipt) .labs-error,
+  body:has(#cafe-receipt) .cafe-nav,
+  body:has(#cafe-receipt) .cafe-shift,
+  body:has(#cafe-receipt) .cafe-order-list,
+  body:has(#cafe-receipt) .cafe-detail-summary,
+  body:has(#cafe-receipt) .cafe-receipt-actions,
+  body:has(#cafe-receipt) .labs-dialog {
+    display: none !important;
+  }
+  body:has(#cafe-receipt) .labs-workspace,
+  body:has(#cafe-receipt) .demo-workspace,
+  body:has(#cafe-receipt) .cafe-app,
+  body:has(#cafe-receipt) .cafe-cashier-grid,
+  body:has(#cafe-receipt) .cafe-order-detail {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+  #cafe-receipt {
+    width: 80mm;
+    max-width: 100%;
+    margin: 0;
+    padding: 8mm;
+    border: 0;
+    color: black;
+    background: white;
+    break-inside: avoid;
+  }
+  #cafe-receipt * {
+    color: black !important;
+  }
+}

@@ -2,6 +2,8 @@
 
 Brand system, company website and six interactive demonstrations for a proposed Malaysian software studio. All seven milestones have now been implemented locally, with launch preparation supplied. Public deployment and real enquiry delivery remain pending. Start with [the delivery report](docs/final-delivery-report.md).
 
+The separately approved six-product programme now adds the PostgreSQL shared platform and integrated Cafe POS at `/demo/cafe-pos`. See the [M1/M2 implementation report and local user guide](docs/six-products/M1-M2-REPORT.md). Five original demos remain available; the retired QR demo redirects to Cafe POS. Ledger Lite remains independent.
+
 ## Run locally
 
 Use Node.js 24 and npm. The lockfile records exact installed versions.
@@ -48,13 +50,13 @@ Marketing generation replaces the generated HTML/CSS files; edit `scripts/genera
 | Route | Demonstration |
 | --- | --- |
 | `/demo/business-website` | Ruang Studio: themes, editable preview and sample visit request |
-| `/demo/qr-ordering` | Saji Café: table, menu, variants, cart and kitchen lifecycle |
+| `/demo/cafe-pos` | Saji Café: table orders, kitchen, cashier, receipts, refunds, inventory and sales |
 | `/demo/booking` | Ruang Bookings: reserve, reschedule, cancel and conflict prevention |
 | `/demo/pos` | Kedai Counter: shift, checkout, receipt, refund, inventory and report |
 | `/demo/e-commerce` | Kedai Everyday: search, detail, promo, checkout and fulfilment |
 | `/demo/sme-management` | Alur Workspace: ledger, invoices, contacts, stock, roles and audit |
 
-Each visitor has an isolated sample workspace shared by these demos and tabs in the same browser profile. POS and shop share stock and feed SME net sales. QR orders use a separate scenario. Reset restores all sample data. Roles are deliberately selectable simulations, not real employee authentication. No payments or notifications leave the application. Use synthetic data only.
+The old `/demo/qr-ordering` URL permanently redirects to `/demo/cafe-pos`; its standalone implementation has been retired. Café POS has its own persisted, product-scoped workspace and reset. The other five demos share an isolated sample workspace across tabs in the same browser profile: retail POS and shop share stock and feed SME net sales. Their reset restores that shared sample data. Roles are deliberately selectable simulations, not real employee authentication. No payments or notifications leave the application. Use synthetic data only.
 
 ## Configuration and limits
 

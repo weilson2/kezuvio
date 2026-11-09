@@ -82,7 +82,7 @@ export function Cart({
   return (
     <aside className="demo-panel cart-panel">
       <div className="panel-heading">
-        <h2>{kind === "qr" ? "Your order" : "Your cart"}</h2>
+        <h2>Your cart</h2>
         <span className="badge">
           {lines.reduce((n, l) => n + l.qty, 0)} items
         </span>

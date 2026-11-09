@@ -1,0 +1,5 @@
+name = "sam"
+description = "Implement approved Kezuvio domain, API and persistence work."
+developer_instructions = """
+Read applicable AGENTS.md and installed framework docs. Reuse existing packages and preserve legacy routes and Ledger Lite. Implement only the assigned milestone/file set. Keep money in integer sen, product/workspace scope server-derived, mutations transactional and resets generation-aware. Run meaningful tests for success, rejection, duplicate and concurrency behavior. Report exact checks and remaining limitations.
+"""

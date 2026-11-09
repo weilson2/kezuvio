@@ -1,5 +1,5 @@
 export type Role = "manager" | "staff" | "viewer";
-export type CartKind = "qr" | "pos" | "shop";
+export type CartKind = "pos" | "shop";
 export type Product = {
   id: string;
   name: string;
@@ -32,13 +32,6 @@ export type Sale = {
   status: "Paid" | "Packed" | "Shipped" | "Refunded";
   shift: number;
 };
-export type FoodOrder = {
-  id: string;
-  table: number;
-  lines: CartLine[];
-  total: number;
-  status: "Received" | "Preparing" | "Ready" | "Completed";
-};
 export type Booking = {
   id: string;
   service: string;
@@ -67,10 +60,8 @@ export type DemoState = {
   counter: number;
   role: Role;
   products: Product[];
-  menu: Product[];
   carts: Record<CartKind, CartLine[]>;
   sales: Sale[];
-  foodOrders: FoodOrder[];
   bookings: Booking[];
   shift: {
     open: boolean;
@@ -180,89 +171,8 @@ export function initialState(): DemoState {
         description: "A fictional undated planner to make space for the week.",
       },
     ],
-    menu: [
-      {
-        id: "nasi",
-        name: "Nasi lemak",
-        category: "Mains",
-        price: 1200,
-        stock: 99,
-        symbol: "◒",
-        description: "Coconut rice, sambal, egg and crisp anchovies.",
-        variants: [
-          { name: "Classic", extra: 0 },
-          { name: "With chicken", extra: 600 },
-        ],
-      },
-      {
-        id: "toast",
-        name: "Kaya toast",
-        category: "Light bites",
-        price: 600,
-        stock: 99,
-        symbol: "▱",
-        description: "Toasted bread with kaya and butter.",
-        variants: [
-          { name: "Regular", extra: 0 },
-          { name: "With eggs", extra: 300 },
-        ],
-      },
-      {
-        id: "noodles",
-        name: "Mee goreng",
-        category: "Mains",
-        price: 1300,
-        stock: 99,
-        symbol: "≋",
-        description: "Fried noodles with vegetables and a little heat.",
-        variants: [
-          { name: "Mild", extra: 0 },
-          { name: "Spicy", extra: 0 },
-        ],
-      },
-      {
-        id: "kopi",
-        name: "Kopi susu",
-        category: "Drinks",
-        price: 650,
-        stock: 99,
-        symbol: "◔",
-        description: "A comforting local coffee with milk.",
-        variants: [
-          { name: "Hot", extra: 0 },
-          { name: "Iced", extra: 100 },
-        ],
-      },
-      {
-        id: "tea",
-        name: "Teh tarik",
-        category: "Drinks",
-        price: 550,
-        stock: 99,
-        symbol: "◕",
-        description: "Creamy pulled milk tea.",
-        variants: [
-          { name: "Hot", extra: 0 },
-          { name: "Iced", extra: 100 },
-        ],
-      },
-      {
-        id: "lime",
-        name: "Lime cooler",
-        category: "Drinks",
-        price: 700,
-        stock: 99,
-        symbol: "◉",
-        description: "Fresh citrus, ice and a bright finish.",
-        variants: [
-          { name: "Regular sugar", extra: 0 },
-          { name: "Less sugar", extra: 0 },
-        ],
-      },
-    ],
-    carts: { qr: [], pos: [], shop: [] },
+    carts: { pos: [], shop: [] },
     sales: [],
-    foodOrders: [],
     bookings: [
       {
         id: "BK-1000",
@@ -429,11 +339,9 @@ export function applyAction(
       log(s, "Edited sample business website");
       break;
     case "cart.add": {
-      const kind = choice(args.kind, ["qr", "pos", "shop"], "cart");
+      const kind = choice(args.kind, ["pos", "shop"], "cart");
       if (kind === "pos") permit(s, ["manager", "staff"]);
-      const p = (kind === "qr" ? s.menu : s.products).find(
-        (p) => p.id === args.productId,
-      );
+      const p = s.products.find((p) => p.id === args.productId);
       if (!p) throw new DemoError("Product not found.", 404);
       const variant = p.variants?.find((v) => v.name === args.variant);
       if (p.variants && !variant) throw new DemoError("Choose an item option.");
@@ -441,7 +349,7 @@ export function applyAction(
       const qty = integer(args.qty ?? 1, "Quantity", 1, 99);
       const existing = s.carts[kind].find((l) => l.key === key);
       const next = (existing?.qty || 0) + qty;
-      if (next > 99 || (kind !== "qr" && next > p.stock))
+      if (next > 99 || next > p.stock)
         throw new DemoError("The requested quantity is not available.");
       if (s.carts[kind].length >= 30 && !existing)
         throw new DemoError("Cart limit reached. Reset or complete the order.");
@@ -458,44 +366,15 @@ export function applyAction(
       break;
     }
     case "cart.quantity": {
-      const kind = choice(args.kind, ["qr", "pos", "shop"], "cart");
+      const kind = choice(args.kind, ["pos", "shop"], "cart");
       if (kind === "pos") permit(s, ["manager", "staff"]);
       const line = s.carts[kind].find((l) => l.key === args.key);
       if (!line) throw new DemoError("Cart item not found.", 404);
       const qty = integer(args.qty, "Quantity", 0, 99);
       const stock = s.products.find((p) => p.id === line.productId)?.stock || 0;
-      if (kind !== "qr" && qty > stock)
-        throw new DemoError("Not enough stock.");
+      if (qty > stock) throw new DemoError("Not enough stock.");
       line.qty = qty;
       s.carts[kind] = s.carts[kind].filter((l) => l.qty > 0);
-      break;
-    }
-    case "qr.submit": {
-      const table = integer(args.table, "Table", 1, 12);
-      if (!s.carts.qr.length)
-        throw new DemoError("Add an item to your order first.");
-      if (s.foodOrders.length >= 50)
-        throw new DemoError("Demo order limit reached. Reset the workspace.");
-      s.foodOrders.unshift({
-        id: id(s, "QR"),
-        table,
-        lines: s.carts.qr,
-        total: cartTotal(s.carts.qr),
-        status: "Received",
-      });
-      s.carts.qr = [];
-      log(s, `Received a simulated order for table ${table}`);
-      break;
-    }
-    case "qr.status": {
-      permit(s, ["manager", "staff"]);
-      const order = s.foodOrders.find((o) => o.id === args.id);
-      if (!order) throw new DemoError("Order not found.", 404);
-      const steps = ["Received", "Preparing", "Ready", "Completed"] as const;
-      const next = steps[steps.indexOf(order.status) + 1];
-      if (!next) throw new DemoError("This order is already complete.");
-      order.status = next;
-      log(s, `${order.id}: ${next}`);
       break;
     }
     case "booking.create":

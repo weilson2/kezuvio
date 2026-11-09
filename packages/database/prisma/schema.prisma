@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas = ["platform", "cafe"]
+}
+
+model Workspace {
+  id String @id @db.Uuid
+  product String
+  generation Int @default(1)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz
+  sessions Session[]
+  documents Document[]
+  requests Request[]
+  audit Audit[]
+  cafeDocuments CafeDocument[]
+  @@unique([id, product])
+  @@map("workspaces")
+  @@schema("platform")
+}
+
+model Session {
+  tokenHash String @id @map("token_hash")
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  role String
+  customerId String @map("customer_id") @db.Uuid
+  expiresAt DateTime @map("expires_at") @db.Timestamptz
+  windowAt DateTime @default(now()) @map("window_at") @db.Timestamptz
+  requests Int @default(0)
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@index([expiresAt], map:"sessions_expiry")
+  @@map("sessions")
+  @@schema("platform")
+}
+
+model Document {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("platform")
+}
+
+model Request {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  requestId String @map("request_id") @db.Uuid
+  inputHash String @map("input_hash")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation,requestId])
+  @@map("requests")
+  @@schema("platform")
+}
+
+model Audit {
+  id BigInt @id @default(autoincrement())
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  action String
+  role String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@index([workspaceId,product,generation],map:"audit_scope")
+  @@map("audit")
+  @@schema("platform")
+}
+
+model Admission {
+  id Boolean @id @default(true)
+  windowAt DateTime @map("window_at") @db.Timestamptz
+  creates Int
+  @@map("admission")
+  @@schema("platform")
+}
+
+model CafeDocument {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("cafe")
+}

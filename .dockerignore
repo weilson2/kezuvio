@@ -1,6 +1,7 @@
 node_modules
 **/.next
 .git
+.local
 .codex-attachments
 tmp
 test-results

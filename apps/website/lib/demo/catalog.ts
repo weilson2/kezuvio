@@ -29,13 +29,17 @@ export const demos: {
     color: "indigo",
   },
   {
-    slug: "qr-ordering",
+    slug: "cafe-pos",
     name: "Saji Café",
-    category: "Restaurant QR ordering",
+    category: "Café POS & QR ordering",
     description:
-      "Choose a table, order a meal and follow it through the staff queue.",
+      "Connect table orders, kitchen tickets, cashier payments, stock and sales in one café workspace.",
     icon: "qr",
-    features: ["Menu variants", "Table orders", "Kitchen status flow"],
+    features: [
+      "Table & kitchen orders",
+      "Payments & receipts",
+      "Stock & sales reports",
+    ],
     color: "clay",
   },
   {

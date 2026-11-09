@@ -3,6 +3,46 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
+  labs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: ephemeral_ci_bootstrap
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      BOOTSTRAP_DATABASE_URL: postgresql://postgres:ephemeral_ci_bootstrap@127.0.0.1:5432/postgres
+      MIGRATION_DATABASE_URL: postgresql://labs_test_owner:ephemeral_ci_owner@127.0.0.1:5432/kezuvio_labs_test
+      DATABASE_URL: postgresql://labs_test_runtime:ephemeral_ci_runtime@127.0.0.1:5432/kezuvio_labs_test
+      DATABASE_RUNTIME_ROLE: labs_test_runtime
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/labs-ci-setup.mjs
+      - run: npm run db:migrate:test
+      - run: npm run db:generate
+      - run: npm run test:platform
+      - run: npm run test:cafe
+      - run: npx playwright install --with-deps chrome
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm run test:labs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: labs-playwright-report
+          path: playwright-report/labs/
+          retention-days: 7
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
