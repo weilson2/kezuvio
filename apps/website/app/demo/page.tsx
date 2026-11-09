@@ -7,7 +7,7 @@ import "./demo.css";
 export const metadata: Metadata = {
   title: "Interactive demo portal",
   description:
-    "Try six fictional business software demonstrations: websites, commerce, café POS with QR ordering, retail POS, bookings and SME management.",
+    "Try fictional business software demonstrations, including Commerce Studio and café POS with independent saved workspaces.",
   alternates: { canonical: "/demo" },
 };
 export default function DemoPortal() {
@@ -16,17 +16,30 @@ export default function DemoPortal() {
       <PageIntro
         eyebrow="Explore / Experiment / Reset"
         title="See what useful software can do."
-        description="Six hands-on demonstrations. Fictional businesses, sample data and real interactions. Find a workflow that feels familiar, then make it your own."
+        description="Hands-on demonstrations. Fictional businesses, sample data and real interactions. Find a workflow that feels familiar, then make it your own."
       />
       <section className="container content-bottom">
         <div className="portal-notice">
           <span className="demo-pill">DEMO MODE</span>
           <p>
-            Every checkout is simulated. Café POS has its own saved workspace;
-            the other five demos share a one-hour workspace in this browser.
-            Each workspace can be reset from its demo controls.
+            Every checkout is simulated. Café POS and Commerce Studio each have
+            their own saved workspace; the five legacy demos share a one-hour
+            workspace in this browser. Each workspace can be reset from its demo
+            controls.
           </p>
         </div>
+        <article className="demo-panel" style={{ marginBottom: 24 }}>
+          <span className="eyebrow">New / Commerce Studio</span>
+          <h2>One shop. Every step connected.</h2>
+          <p>
+            Manage fictional products and stock, shop the catalogue, simulate
+            checkout and follow orders through fulfilment. Explore the seller
+            dashboard in an independent saved workspace.
+          </p>
+          <Link href="/demo/commerce-studio" className="button">
+            Try Commerce Studio <Icon name="arrow" />
+          </Link>
+        </article>
         <div className="demo-portal-grid">
           {demos.map((demo, i) => (
             <article className="demo-portal-card" key={demo.slug}>

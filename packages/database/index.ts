@@ -80,7 +80,11 @@ export function createRepository<S>(
     throw new Error("Invalid product identifier");
   // Fixed mapping only: SQL identifiers never come from request input.
   const table =
-    module.id === "cafe-pos" ? "cafe.documents" : "platform.documents";
+    module.id === "cafe-pos"
+      ? "cafe.documents"
+      : module.id === "commerce-studio"
+        ? "commerce.documents"
+        : "platform.documents";
   const options = { maxWait: 10000, timeout: 15000 };
   async function packet(
     tx: Tx,

@@ -33,6 +33,7 @@ jobs:
       - run: npm run db:generate
       - run: npm run test:platform
       - run: npm run test:cafe
+      - run: npm run test:commerce
       - run: npx playwright install --with-deps chrome
       - run: npm run build
       - run: npm run typecheck

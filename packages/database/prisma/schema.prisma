@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  schemas = ["platform", "cafe"]
+  schemas = ["platform", "cafe", "commerce"]
 }
 
 model Workspace {
@@ -17,6 +17,7 @@ model Workspace {
   requests Request[]
   audit Audit[]
   cafeDocuments CafeDocument[]
+  commerceDocuments CommerceDocument[]
   @@unique([id, product])
   @@map("workspaces")
   @@schema("platform")
@@ -92,4 +93,15 @@ model CafeDocument {
   @@id([workspaceId,product,generation])
   @@map("documents")
   @@schema("cafe")
+}
+
+model CommerceDocument {
+  workspaceId String @map("workspace_id") @db.Uuid
+  product String
+  generation Int
+  state Json
+  workspace Workspace @relation(fields:[workspaceId,product],references:[id,product],onDelete:Cascade)
+  @@id([workspaceId,product,generation])
+  @@map("documents")
+  @@schema("commerce")
 }

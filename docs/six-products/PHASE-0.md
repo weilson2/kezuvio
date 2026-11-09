@@ -4,6 +4,8 @@ Prepared 5 November 2026, Asia/Kuala_Lumpur. **Status: audit and planning delive
 
 **Implementation update, 9 November:** the user accepted M1/M2 automated and manual testing, approved closing both milestones, and authorized M3 Commerce Studio. M4 and later remain unapproved. See [M1/M2 verification](M1-M2-REPORT.md) and [current progress](PROGRESS.md); the original planning record below is historical.
 
+M3 passed user manual acceptance; closing M3 and implementing M4 AI Automation Hub is now explicitly approved. M5 and later remain unapproved. See [current progress](PROGRESS.md). Historical approval boundaries below are superseded only for M1–M4.
+
 ## Decision
 
 Extend `D:\WORKKK\kezuvio`. Do not create a duplicate project in the proposed `D:\Kezuvio-Labs` (that directory was absent during inspection). Retain the existing website, six old demo URLs, branding and Ledger Lite. Build the shared data/session foundation, then one integrated Cafe POS before moving to another product.

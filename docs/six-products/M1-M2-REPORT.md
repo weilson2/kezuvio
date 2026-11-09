@@ -1,5 +1,7 @@
 # M1/M2 implementation and local review
 
+Closure update, 9 November 2026: the user accepted automated and manual testing, approved closing M1/M2, and authorized M3 Commerce Studio. Commit `0727252`, tag `labs-m1-m2-accepted-2026-11-09`. See [current progress and verified local backup](PROGRESS.md) and [M3 report](M3-REPORT.md). The dated implementation report below is historical.
+
 7 November 2026, Asia/Kuala_Lumpur. **M1 and M2 completed and verified; stopped for user review.** Existing repository: `D:\WORKKK\kezuvio`. M1 passed its acceptance gate before M2 implementation began. No M3 work, public deployment, purchases, real payment processing or unrelated application changes.
 
 ## Delivered scope

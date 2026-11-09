@@ -20,6 +20,8 @@
     "db:migrate:test": "node scripts/labs-db.mjs --test",
     "test:platform": "node --test tests/labs/platform-domain.test.mjs tests/labs/platform-db.test.mjs",
     "test:cafe": "node --test tests/labs/cafe-domain.test.mjs tests/labs/cafe-db.test.mjs",
+    "test:commerce": "node --test tests/labs/commerce-domain.test.mjs tests/labs/commerce-db.test.mjs",
+    "db:backup": "node scripts/labs-backup.mjs",
     "test:labs": "playwright test --config playwright.labs.config.ts",
     "pdf:brand": "node scripts/export-brand-presentation.mjs",
     "marketing:generate": "node scripts/generate-marketing.mjs && node scripts/generate-marketing-previews.mjs"

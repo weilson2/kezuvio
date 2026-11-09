@@ -11,6 +11,7 @@ import {
   platformFixture,
 } from "../../../../packages/demo-platform/index";
 import { cafeModule } from "../../../../packages/cafe/index";
+import { commerceModule } from "../../../../packages/commerce/index";
 
 const shared = globalThis as typeof globalThis & {
   kezuvioLabsDb?: ReturnType<typeof createDatabase>;
@@ -19,6 +20,7 @@ function repository(product: string): DemoRepository {
   // Acceptance fixtures are never exposed unless explicitly enabled at runtime.
   if (
     product !== "cafe-pos" &&
+    product !== "commerce-studio" &&
     (process.env.LABS_ACCEPTANCE_MODE !== "1" ||
       !["platform-check", "platform-other"].includes(product))
   )
@@ -27,7 +29,9 @@ function repository(product: string): DemoRepository {
   const db = (shared.kezuvioLabsDb ??= createDatabase());
   return product === "cafe-pos"
     ? createRepository(db, cafeModule)
-    : createRepository(db, { ...platformFixture, id: product });
+    : product === "commerce-studio"
+      ? createRepository(db, commerceModule)
+      : createRepository(db, { ...platformFixture, id: product });
 }
 function json(body: unknown, status = 200) {
   return NextResponse.json(body, {

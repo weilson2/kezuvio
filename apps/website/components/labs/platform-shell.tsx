@@ -13,7 +13,7 @@ import type { Packet } from "../../../../packages/database/index";
 import type { Role } from "../../../../packages/demo-platform/index";
 import "./labs.css";
 
-const roles: Role[] = ["customer", "kitchen", "cashier", "manager", "viewer"];
+const defaultRoles: Role[] = ["customer", "kitchen", "cashier", "manager", "viewer"];
 
 export function useLabWorkspace(product: string) {
   const [packet, setPacket] = useState<Packet | null>(null);
@@ -178,12 +178,14 @@ export function LabShell({
   category = "Interactive demo",
   description,
   workspace,
+  roles = defaultRoles,
   children,
 }: {
   title: string;
   category?: string;
   description: string;
   workspace: LabWorkspace;
+  roles?: Role[];
   children: ReactNode;
 }) {
   const {

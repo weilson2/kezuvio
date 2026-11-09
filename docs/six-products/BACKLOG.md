@@ -4,6 +4,8 @@ Status on 5 November 2026: M0 delivered; all subsequent rows planned. Estimates 
 
 Update 9 November: the user accepted and approved closing M1/M2 and authorized M3 Commerce Studio. See [current progress](PROGRESS.md) and [M1/M2 evidence](M1-M2-REPORT.md). M4–M8 remain planning only; stop for review after M3.
 
+M3 closure update: E01–E03 passed user manual acceptance. M4 A01–A04 is explicitly authorized; M5 and later remain unapproved. [M3 report](M3-REPORT.md) records delivery evidence; [progress](PROGRESS.md) records closure and M4 status.
+
 ## M0 — reviewable foundation plan
 
 Owner Alex, with Ada audit, Mia design and Ava estimate responsibilities. Environment/reuse audit, official sources, architecture, isolation/reset, backlog, design and tooling drafts delivered. Skill/config activation is explicitly separate from draft validation; no new product has been implemented.

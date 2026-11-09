@@ -2,7 +2,7 @@
 
 Brand system, company website and six interactive demonstrations for a proposed Malaysian software studio. All seven milestones have now been implemented locally, with launch preparation supplied. Public deployment and real enquiry delivery remain pending. Start with [the delivery report](docs/final-delivery-report.md).
 
-The separately approved six-product programme now adds the PostgreSQL shared platform and integrated Cafe POS at `/demo/cafe-pos`. See the [M1/M2 implementation report and local user guide](docs/six-products/M1-M2-REPORT.md). Five original demos remain available; the retired QR demo redirects to Cafe POS. Ledger Lite remains independent.
+The separately approved six-product programme adds the PostgreSQL shared platform, Cafe POS at `/demo/cafe-pos`, and Commerce Studio at `/demo/commerce-studio`. M1/M2 are accepted; M3 is prepared for review. See [programme progress](docs/six-products/PROGRESS.md), the [Cafe guide](docs/six-products/M1-M2-REPORT.md), and the [Commerce guide and verification](docs/six-products/M3-REPORT.md). Five original demos remain available; the retired QR demo redirects to Cafe POS. Ledger Lite remains independent.
 
 ## Run locally
 
@@ -14,7 +14,7 @@ npm run build
 npm run start
 ```
 
-Open `http://127.0.0.1:3000`, `/demo` for the six demonstrations, or `/brand` for the brand workbench. `npm run dev` starts development mode. Use one Node process: demo sessions live in process memory and reset after one hour or a restart.
+Open `http://127.0.0.1:3000`, `/demo` for the demonstrations, or `/brand` for the brand workbench. `npm run dev` starts development mode. The five legacy demos use one Node process and in-memory sessions. Cafe and Commerce require the local PostgreSQL instance described in their guides, persist across restarts, and use separate one-hour workspaces and resets.
 
 ## Verify and regenerate
 
@@ -25,7 +25,7 @@ npm run marketing:generate
 npm run pdf:brand
 ```
 
-Build before browser tests. Tests use installed Google Chrome; `npx playwright install chrome` installs the required channel where supported. Playwright starts and stops its own preview server when one is not already running. `npm test` runs brand checks, 9 domain tests and 51 browser/API tests. With a server running, `node scripts/measure-preview.mjs` measures local homepage performance.
+Build before browser tests. Tests use installed Google Chrome; `npx playwright install chrome` installs the required channel where supported. Playwright starts and stops its own preview server when one is not already running. `npm test` runs brand checks, 8 legacy domain tests and 51 browser/API tests. For PostgreSQL products also run `npm run test:platform`, `npm run test:cafe`, `npm run test:commerce` and `npm run test:labs`. Run browser suites sequentially so their reports remain intact. With a server running, `node scripts/measure-preview.mjs` measures local homepage performance.
 
 Marketing generation replaces the generated HTML/CSS files; edit `scripts/generate-marketing.mjs` for lasting template changes. Presentation source is `documents/brand-presentation/`. See [asset instructions](docs/marketing-delivery.md).
 
@@ -54,9 +54,10 @@ Marketing generation replaces the generated HTML/CSS files; edit `scripts/genera
 | `/demo/booking` | Ruang Bookings: reserve, reschedule, cancel and conflict prevention |
 | `/demo/pos` | Kedai Counter: shift, checkout, receipt, refund, inventory and report |
 | `/demo/e-commerce` | Kedai Everyday: search, detail, promo, checkout and fulfilment |
+| `/demo/commerce-studio` | Commerce Studio: persisted products, inventory, carts, mock checkout, orders and seller dashboard |
 | `/demo/sme-management` | Alur Workspace: ledger, invoices, contacts, stock, roles and audit |
 
-The old `/demo/qr-ordering` URL permanently redirects to `/demo/cafe-pos`; its standalone implementation has been retired. Café POS has its own persisted, product-scoped workspace and reset. The other five demos share an isolated sample workspace across tabs in the same browser profile: retail POS and shop share stock and feed SME net sales. Their reset restores that shared sample data. Roles are deliberately selectable simulations, not real employee authentication. No payments or notifications leave the application. Use synthetic data only.
+The old `/demo/qr-ordering` URL permanently redirects to `/demo/cafe-pos`; its standalone implementation has been retired. Café POS and Commerce Studio each have independent persisted, product-scoped workspaces and resets. The five legacy demos share an isolated sample workspace across tabs in the same browser profile: retail POS and the legacy shop share stock and feed SME net sales. Their reset restores that shared sample data. Roles are deliberately selectable simulations, not real employee authentication. No payments or notifications leave the application. Use synthetic data only.
 
 ## Configuration and limits
 
