@@ -34,6 +34,7 @@ jobs:
       - run: npm run test:platform
       - run: npm run test:cafe
       - run: npm run test:commerce
+      - run: npm run test:automation
       - run: npx playwright install --with-deps chrome
       - run: npm run build
       - run: npm run typecheck

@@ -1,11 +1,11 @@
 # Programme progress
 
-9 November 2026, Asia/Kuala_Lumpur.
+Updated 11 November 2026, Asia/Kuala_Lumpur.
 
 - M1 shared platform and M2 Cafe POS: automated and manual acceptance approved by the user. Milestone closure includes the separately requested QR consolidation and shared demo layout, which are dependencies of the accepted Cafe UI.
-- M3 Commerce Studio: automated and manual acceptance approved by the user; closing with a scoped commit/tag. See [delivery and acceptance evidence](M3-REPORT.md).
-- M4 AI Automation Hub: explicitly authorized; implementation follows the M3 closure and backup verification.
-- M5 onward: not authorized; stop after M4 for manual acceptance.
+- M3 Commerce Studio: accepted and closed at `24e7a53` with tag `labs-m3-accepted-2026-11-09`. See [delivery and acceptance evidence](M3-REPORT.md).
+- M4 AI Automation Hub: manual acceptance completed. Closure is recorded by the annotated tag `labs-m4-accepted-2026-11-11`. See [implementation and verification](M4-REPORT.md).
+- M5 Property CRM: planning approved. Implementation awaits a separate decision.
 
 Unrelated Ledger Lite files, its preview/scripts, website scroll change, navigation-scroll tests and Flutter ignore patterns remain outside the M1/M2 commit.
 
@@ -34,3 +34,19 @@ The website scroll change, navigation-scroll test and Ledger script match their 
 `node scripts/labs-backup.mjs` passed again for both local databases, now including Commerce. Private manifest: `.local/postgresql/backups/2026-11-09T14-22-54-700Z-a8a6d3b7/manifest.json`. Both archives restored into unique scratch databases; table contents, schema/effective permissions/RLS and sequence safety matched. Scratch databases were removed, source databases unchanged, no credentials exposed. The same-cluster/off-device limitation still applies.
 
 M3 closure fresh build passed; `npm.cmd run test:labs -- tests/labs/commerce.spec.ts` passed 10/10 in 39.7s. M3 is accepted for the closure commit and tag.
+
+M3 closure committed as `24e7a53`, annotated tag `labs-m3-accepted-2026-11-09`. Only the audited M3 paths were staged; all unrelated work remains unstaged. M4 implementation started after this gate. Sam owns the domain and unit tests, Mia the new UI, Ada browser tests/review, and Alex the database/API integration and final verification. No paid APIs, messages, public deployment or M5 work.
+
+## M4 review handoff
+
+11 November. The delivery run passed 244 distinct tests across Automation, Cafe, Commerce, platform, website, legacy demos and Ledger Lite. The running-task restart rehearsal and ordinary preview smoke checks also passed. The migration syntax failure and recovery are recorded in the M4 report.
+
+## M4 acceptance and database recovery rehearsal
+
+The user completed manual acceptance and authorized M4 closure. A fresh closure run passed `npm.cmd run test:automation` (27), `npm.cmd run test:unit` (8), `npm.cmd run build`, `npm.cmd run typecheck`, `node scripts/check-brand.mjs` and `npm.cmd run test:labs -- tests/labs/automation.spec.ts` (12, 36.6 seconds). Full cross-product regression counts above are from delivery. The closure run was targeted to M4 and the shared baseline.
+
+`npm.cmd run db:backup` produced verified M4-era development and test archives, including `automation.documents`. Manifest: `.local/postgresql/backups/2026-11-10T20-06-34-107Z-ecb18c5d/manifest.json`. Separately, an ignored one-off rehearsal reused the existing backup helper's connection guards and verification functions to restore both original pre-M4 archives from `2026-11-09T14-22-54-700Z-a8a6d3b7`. Archive SHA-256, restored table contents, schema fingerprints and sequence safety matched. The pre-M4 restores retained Cafe and Commerce and had no Automation schema. Every restore used a generated scratch database, which was removed after verification. The active databases and local credentials stayed in place.
+
+The rollback path is to use a prior compatible application revision for an app-only rollback and keep additive schemas in place. If restoring data is necessary, first back up current state, restore the selected verified archive to a separate database with the original role mapping, and validate the matching application before any separately authorized connection switch. A switch to a pre-M4 snapshot would omit writes made after that snapshot. This rehearsal verified the database restore path. Application cutover and off-device recovery were outside the rehearsal.
+
+Closure staging included only M4 implementation, migration, tooling, tests, previews and acceptance documentation. The independent Ledger Lite work, its preview and script, the website scroll change, navigation-scroll test and Flutter ignore rules stayed outside the commit.

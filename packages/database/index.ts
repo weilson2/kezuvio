@@ -84,6 +84,8 @@ export function createRepository<S>(
       ? "cafe.documents"
       : module.id === "commerce-studio"
         ? "commerce.documents"
+        : module.id === "automation-hub"
+          ? "automation.documents"
         : "platform.documents";
   const options = { maxWait: 10000, timeout: 15000 };
   async function packet(

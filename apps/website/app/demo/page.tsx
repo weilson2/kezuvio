@@ -7,7 +7,7 @@ import "./demo.css";
 export const metadata: Metadata = {
   title: "Interactive demo portal",
   description:
-    "Try fictional business software demonstrations, including Commerce Studio and café POS with independent saved workspaces.",
+    "Try fictional business software demonstrations, including AI Automation Hub, Commerce Studio and café POS with independent saved workspaces.",
   alternates: { canonical: "/demo" },
 };
 export default function DemoPortal() {
@@ -22,10 +22,10 @@ export default function DemoPortal() {
         <div className="portal-notice">
           <span className="demo-pill">DEMO MODE</span>
           <p>
-            Every checkout is simulated. Café POS and Commerce Studio each have
-            their own saved workspace; the five legacy demos share a one-hour
-            workspace in this browser. Each workspace can be reset from its demo
-            controls.
+            All payments and messages are simulated. Café POS, Commerce Studio
+            and AI Automation Hub each have their own saved workspace; the five
+            legacy demos share a one-hour workspace in this browser. Each
+            workspace can be reset from its demo controls.
           </p>
         </div>
         <article className="demo-panel" style={{ marginBottom: 24 }}>
@@ -38,6 +38,18 @@ export default function DemoPortal() {
           </p>
           <Link href="/demo/commerce-studio" className="button">
             Try Commerce Studio <Icon name="arrow" />
+          </Link>
+        </article>
+        <article className="demo-panel" style={{ marginBottom: 24 }}>
+          <span className="eyebrow">New / AI Automation Hub</span>
+          <h2>From inquiry to a reviewed quotation.</h2>
+          <p>
+            Explore deterministic requirements analysis, editable pricing, a
+            working task queue and follow-up tracking. A person approves every
+            quotation before it can be marked ready. No messages are sent.
+          </p>
+          <Link href="/demo/automation-hub" className="button">
+            Try AI Automation Hub <Icon name="arrow" />
           </Link>
         </article>
         <div className="demo-portal-grid">

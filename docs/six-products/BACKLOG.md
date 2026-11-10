@@ -62,6 +62,8 @@ Sam owns implementation; Ada verifies. Reuse the existing commerce interactions 
 
 Default queue execution is explicit user-triggered simulation backed by DB records. A continuously running worker/Redis requires a demonstrated need, cost update and infrastructure implementation. Do not label a static list as an executing queue. Sam implements; Ava validates workflow; Ada tests failures/retries.
 
+A01–A04 passed automated and manual acceptance. M4 closure is recorded in [programme progress](PROGRESS.md). M5 planning is authorized and implementation awaits approval.
+
 ## M5 — Property CRM (5–8 days, after M4)
 
 | ID | Work | Acceptance |
